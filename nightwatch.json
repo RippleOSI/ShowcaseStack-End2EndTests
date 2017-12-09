@@ -1,0 +1,57 @@
+{
+  "src_folders" : ["tests"],
+  "output_folder" : "reports",
+  "custom_commands_path" : "",
+  "custom_assertions_path" : "",
+  "page_objects_path" : "page_objects",
+  "globals_path" : "",
+
+  "selenium" : {
+    "start_process" : true,
+    "server_path" : "D:\\Source\\selenium-server-standalone-3.8.0.jar",
+    "log_path" : "",
+    "port" : 4444,
+    "cli_args" : {
+      "webdriver.chrome.driver" : "D:\\Source\\chromedriver.exe",
+      "webdriver.gecko.driver" : "",
+      "webdriver.edge.driver" : ""
+    }
+  },
+
+  "test_settings" : {
+    "default" : {
+      "launch_url" : "https://secureshowcase.ripple.foundation/",
+      "selenium_port"  : 4444,
+      "selenium_host"  : "localhost",
+      "silent": true,
+      "screenshots" : {
+        "enabled" : true,
+        "on_failure" : true,
+        "on_error" : true,
+        "path" : ""
+      },
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "marionette": true
+      },
+      "globals" : {
+        "wait_milliseconds": 3000,
+        "version" : "angular"
+      }
+    },
+
+    "dev_ang" : {
+      "launch_url" : "https://securedev.ripple.foundation/",
+      "globals" : {
+        "version" : "angular"
+      }
+    },
+
+    "dev_react" : {
+      "launch_url" : "https://securedev.ripple.foundation/",
+      "globals" : {
+        "version" : "react"
+      }
+    }
+  }
+}
