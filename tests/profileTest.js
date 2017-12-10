@@ -1,9 +1,8 @@
 module.exports = {
     'User Profile drop-down': function (browser) {
 
-        var loginPage = browser.page.loginPage();
-
-        loginPage.login();
+        browser.page.loginPage()
+            .login();
 
         browser.page.patientSummaryPage()
             .handlePopUp();
@@ -24,7 +23,7 @@ module.exports = {
             .assert.containsText('@info', 'About Showcase Stack; PulseTile version 1.0.0/QEWD_Ripple version 1.0.0')
             .click('@avatar');
 
-        var userProfilePage = browser.page.userProfile();
+        var userProfilePage = browser.page.patientInformationPage();
 
         userProfilePage.waitForElementVisible('@header', browser.globals.wait_milliseconds);
 
