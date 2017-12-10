@@ -28,7 +28,7 @@
         "enabled" : true,
         "on_failure" : true,
         "on_error" : true,
-        "path" : ""
+        "path" : "reports\\screenshots"
       },
       "desiredCapabilities": {
         "browserName": "chrome",
