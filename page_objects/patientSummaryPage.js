@@ -1,18 +1,11 @@
 var patientSummaryCommands = {
     handlePopUp: function () {
         try {
-            this.waitForElementPresent('@popUpButtonOk', this.globals.wait_milliseconds);
-            this.isVisible('@popUpButtonOk', function (result) {
-                this.assert.equal(typeof result, "object");
-                console.log(result.value);
-                if (result.value === true) {
-                    console.log('!!clicking');
-                    console.log(this);
-                    this.click('@popUpButtonOk')
-                }
-            });
-            this.waitForElementNotPresent('@popUpButtonOk', this.globals.wait_milliseconds);
+            this.waitForElementVisible('@popUpButtonOk', this.api.globals.wait_milliseconds);
+            this.click('@popUpButtonOk');
+            this.waitForElementNotPresent('@popUpButtonOk', this.api.globals.wait_milliseconds);
         } catch (ex) {
+            console.log("The notification pop-up didn't (dis)appear");
             console.log(ex);
         }
     }

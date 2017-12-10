@@ -1,5 +1,5 @@
 module.exports = {
-    'Login Test': function (browser) {
+    'User login (Patient banner)': function (browser) {
         browser.url(browser.launchUrl);
 
         var loginPage = browser.page.loginPage();
