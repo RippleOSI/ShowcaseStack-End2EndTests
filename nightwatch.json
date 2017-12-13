@@ -4,7 +4,7 @@
   "custom_commands_path" : "",
   "custom_assertions_path" : "",
   "page_objects_path" : "page_objects",
-  "globals_path" : "",
+  "globals_path" : "globals",
 
   "selenium" : {
     "start_process" : true,
@@ -35,22 +35,25 @@
         "marionette": true
       },
       "globals" : {
-        "wait_milliseconds": 3000,
-        "version" : "angular"
+        "wait_milliseconds": 3000
       }
     },
 
     "dev_ang" : {
       "launch_url" : "https://securedev.ripple.foundation/",
       "globals" : {
-        "version" : "angular"
+        "version_switch_host": "dev.ripple.foundation",
+        "version_switch_init_path": "/api/initialise",
+        "version_switch_path": "/api/ui/angular"
       }
     },
 
     "dev_react" : {
       "launch_url" : "https://securedev.ripple.foundation/",
       "globals" : {
-        "version" : "react"
+        "version_switch_host": "dev.ripple.foundation",
+        "version_switch_init_path": "/api/initialise",
+        "version_switch_path": "/api/ui/react"
       }
     }
   }
