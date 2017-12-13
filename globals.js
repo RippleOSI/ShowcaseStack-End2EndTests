@@ -19,7 +19,7 @@ module.exports = {
      * @param done
      */
     beforeEach: function (browser, done) {
-        if (browser.globals.version_switch_host !== "") {
+        if (browser.globals.version_switch_host !== undefined) {
             console.log("Switching to " + browser.globals.version_switch_path);
 
             var http = require('http');
