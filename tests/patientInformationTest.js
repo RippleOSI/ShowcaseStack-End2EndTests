@@ -9,7 +9,7 @@ module.exports = {
 
 
         patientInformationPage.section.preferences.waitForElementVisible('@title', browser.globals.wait_milliseconds)
-            .assert.containsText('@title', 'Application preferences');
+            .assert.containsText('@title', 'Application Preferences');
         patientInformationPage.section.personalInfo.assert.containsText('@title', 'Personal Information');
         patientInformationPage.section.contacts.assert.containsText('@title', 'Contact Information');
         patientInformationPage.section.changeHistory.assert.containsText('@title', 'Change History');
