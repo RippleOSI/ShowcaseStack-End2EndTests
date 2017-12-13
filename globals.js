@@ -1,4 +1,12 @@
+var HtmlReporter = require('nightwatch-html-reporter');
+var reporter = new HtmlReporter({
+    openBrowser: true,
+    reportsDirectory: __dirname + '/reports',
+    themeName: 'cover'
+});
+
 module.exports = {
+    reporter: reporter.fn,
 
     /**
      * Switches to specific version of app. To work properly, the env has to have following properties:

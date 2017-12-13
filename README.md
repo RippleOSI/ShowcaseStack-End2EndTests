@@ -10,6 +10,12 @@ For Windows
 * Download chrome driver https://sites.google.com/a/chromium.org/chromedriver/downloads (checked for version 2.34)
 * Set path to selenium-standalone-server.jar and chromedriver.exe in nightwatch.json selenium > server_path
 * Set path to chromedriver.exe in nightwatch.json selenium > cli_args > webdriver.chrome.driver
+* Run 'npm install' command from parent catalog to install the dependencies
+* Fix nightwatch-html-reporter
+    * Open node_modules\nightwatch-html-reporter\node_modules\pug\node_modules\pug-code-gen\index.js
+    * Scroll to line 813 'attributeBlocks(attributeBlocks) {'
+    * Make it 'attributeBlocks:function(attributeBlocks) {'
+    * Yes, that's dull, but there is a known issue and this is a workaround. Maybe later versions of reporter would use later version of pug and this step would be redundant.
 * Run tests from parent catalog command line with command 'nightwatch'
 
 # nightwatch.json

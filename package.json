@@ -1,0 +1,7 @@
+{
+  "name": "PulseTile-Tests",
+  "version": "0.0.1",
+  "dependencies": {
+    "nightwatch-html-reporter": "~2.0.4"
+  }
+}
