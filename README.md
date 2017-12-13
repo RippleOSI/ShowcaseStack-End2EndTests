@@ -17,6 +17,8 @@ For Windows
     * Make it 'attributeBlocks:function(attributeBlocks) {'
     * Yes, that's dull, but there is a known issue and this is a workaround. Maybe later versions of reporter would use later version of pug and this step would be redundant.
 * Run tests from parent catalog command line with command 'nightwatch'
+* When the tests are finished, the report will be displayed in your browser
+* You can find screenshots of failed tests in reports\screenshots
 
 # nightwatch.json
 Is a config file. See for full details http://nightwatchjs.org/gettingstarted/#settings-file
