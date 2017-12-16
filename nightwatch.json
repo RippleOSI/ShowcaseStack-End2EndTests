@@ -39,6 +39,10 @@
       }
     },
 
+    "showcase" : {
+      "launch_url" : "https://secureshowcase.ripple.foundation/"
+    },
+
     "dev_ang" : {
       "launch_url" : "https://securedev.ripple.foundation/",
       "globals" : {
