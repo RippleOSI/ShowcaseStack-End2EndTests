@@ -19,7 +19,7 @@ module.exports = {
             .assert.containsText('@nhsNoLabel', 'NHS No')
             .assert.containsText('@nhsNoValue', '')
             .assert.containsText('@birthdayLabel', 'Date of Birth')
-            .assert.containsText('@birthdayValue', '14-Dec-2017')
+            .assert.containsText('@birthdayValue', '27-Nov-2017')
             .assert.containsText('@genderLabel', 'Gender')
             .assert.containsText('@genderValue', 'Female')
             .assert.containsText('@doctorLabel', 'Doctor')
