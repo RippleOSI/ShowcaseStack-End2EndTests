@@ -25,13 +25,9 @@ module.exports = {
 
         filterMenuSection = patientSummarySection.section.filterMenu;
 
-        filterMenuSection.waitForElementPresent('@contactsCheckbox', browser.globals.wait_milliseconds)
-            .assert.visible('@contactsCheckboxLabel')
-            .assert.elementPresent('@problemsCheckbox')
+        filterMenuSection.waitForElementVisible('@contactsCheckboxLabel', browser.globals.wait_milliseconds)
             .assert.visible('@problemsCheckboxLabel')
-            .assert.elementPresent('@allergiesCheckbox')
             .assert.visible('@allergiesCheckboxLabel')
-            .assert.elementPresent('@medicationsCheckbox')
             .assert.visible('@medicationsCheckboxLabel')
             .click('@contactsCheckboxLabel');
 

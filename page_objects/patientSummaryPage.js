@@ -1,7 +1,5 @@
 var patientSummaryCommands = {
     handlePopUp: function () {
-        console.log(this.api.globals.version_switch_path.indexOf('ang'));
-        console.log(this.api.globals.version_switch_path === undefined || this.api.globals.version_switch_path.indexOf('ang') !== -1)
         if (this.api.globals.version_switch_path === undefined || this.api.globals.version_switch_path.indexOf('ang') !== -1) {
             try {
                 this.waitForElementVisible('@popUpButtonOk', this.api.globals.wait_milliseconds);
@@ -52,7 +50,7 @@ module.exports = {
             }
         },
         patientSummary: {
-            selector: ".section-main",
+            selector: ".panel-primary",
             elements: {
                 title: ".panel-heading .panel-title",
                 filterButton: ".panel-heading .btn-dropdown-toggle"
@@ -61,51 +59,47 @@ module.exports = {
                 filterMenu: {
                     selector: ".panel-heading .dropdown-menu",
                     elements: {
-                        problemsCheckbox: "#dashboard-problems",
                         problemsCheckboxLabel: {
-                            selector: "div//label[@for='dashboard-problems']",
+                            selector: "div//label[contains(@for,'problems')]",
                             locateStrategy: 'xpath'
                         },
-                        contactsCheckbox: "#dashboard-contacts",
                         contactsCheckboxLabel: {
-                            selector: "div//label[@for='dashboard-contacts']",
+                            selector: "div//label[contains(@for,'contacts')]",
                             locateStrategy: 'xpath'
                         },
-                        allergiesCheckbox: "#dashboard-allergies",
                         allergiesCheckboxLabel: {
-                            selector: "div//label[@for='dashboard-allergies']",
+                            selector: "div//label[contains(@for,'allergies')]",
                             locateStrategy: 'xpath'
                         },
-                        medicationsCheckbox: "#dashboard-medications",
                         medicationsCheckboxLabel: {
-                            selector: "div//label[@for='dashboard-medications']",
+                            selector: "div//label[contains(@for,'medications')]",
                             locateStrategy: 'xpath'
                         }
                     }
                 },
                 problemsBoard: {
-                    selector: "patients-summary-component//div[contains(@class,'dashboard-item')][contains(., 'Problems')]",
+                    selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Problems')]",
                     locateStrategy: 'xpath',
                     elements: {
                         header: "h3"
                     }
                 },
                 contactsBoard: {
-                    selector: "patients-summary-component//div[contains(@class,'dashboard-item')][contains(., 'Contacts')]",
+                    selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Contacts')]",
                     locateStrategy: 'xpath',
                     elements: {
                         header: "h3"
                     }
                 },
                 allergiesBoard: {
-                    selector: "patients-summary-component//div[contains(@class,'dashboard-item')][contains(., 'Allergies')]",
+                    selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Allergies')]",
                     locateStrategy: 'xpath',
                     elements: {
                         header: "h3"
                     }
                 },
                 medicationsBoard: {
-                    selector: "patients-summary-component//div[contains(@class,'dashboard-item')][contains(., 'Medications')]",
+                    selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Medications')]",
                     locateStrategy: 'xpath',
                     elements: {
                         header: "h3"
