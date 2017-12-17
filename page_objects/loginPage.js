@@ -1,6 +1,7 @@
 var loginCommands = {
     login: function () {
         this.api.url(this.api.launchUrl);
+        this.api.windowMaximize('current');
         this.waitForElementVisible('@loginInput', this.api.globals.wait_milliseconds)
             .setValue('@loginInput', 'Alen')
             .setValue('@passwordInput', '070790')
