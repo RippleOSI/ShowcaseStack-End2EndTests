@@ -46,6 +46,68 @@ module.exports = {
                     locateStrategy: 'xpath'
                 }
             }
+        },
+        patientSummary: {
+            selector: ".section-main",
+            elements: {
+                title: ".panel-heading .panel-title",
+                filterButton: ".panel-heading .btn-dropdown-toggle"
+            },
+            sections: {
+                filterMenu: {
+                    selector: ".panel-heading .dropdown-menu",
+                    elements: {
+                        problemsCheckbox: "#dashboard-problems",
+                        problemsCheckboxLabel: {
+                            selector: "div//label[@for='dashboard-problems']",
+                            locateStrategy: 'xpath'
+                        },
+                        contactsCheckbox: "#dashboard-contacts",
+                        contactsCheckboxLabel: {
+                            selector: "div//label[@for='dashboard-contacts']",
+                            locateStrategy: 'xpath'
+                        },
+                        allergiesCheckbox: "#dashboard-allergies",
+                        allergiesCheckboxLabel: {
+                            selector: "div//label[@for='dashboard-allergies']",
+                            locateStrategy: 'xpath'
+                        },
+                        medicationsCheckbox: "#dashboard-medications",
+                        medicationsCheckboxLabel: {
+                            selector: "div//label[@for='dashboard-medications']",
+                            locateStrategy: 'xpath'
+                        }
+                    }
+                },
+                problemsBoard: {
+                    selector: "patients-summary-component//div[contains(@class,'dashboard-item')][contains(., 'Problems')]",
+                    locateStrategy: 'xpath',
+                    elements: {
+                        header: "h3"
+                    }
+                },
+                contactsBoard: {
+                    selector: "patients-summary-component//div[contains(@class,'dashboard-item')][contains(., 'Contacts')]",
+                    locateStrategy: 'xpath',
+                    elements: {
+                        header: "h3"
+                    }
+                },
+                allergiesBoard: {
+                    selector: "patients-summary-component//div[contains(@class,'dashboard-item')][contains(., 'Allergies')]",
+                    locateStrategy: 'xpath',
+                    elements: {
+                        header: "h3"
+                    }
+                },
+                medicationsBoard: {
+                    selector: "patients-summary-component//div[contains(@class,'dashboard-item')][contains(., 'Medications')]",
+                    locateStrategy: 'xpath',
+                    elements: {
+                        header: "h3"
+                    }
+                }
+            }
         }
     },
     elements: {
