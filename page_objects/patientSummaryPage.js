@@ -207,6 +207,7 @@ module.exports = {
         }
     },
     elements: {
+        leftBarMenuToggle : ".btn-toggle-sidebar",
         popUpButtonOk: ".modal-content .btn-success"
     }
 };
