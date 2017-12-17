@@ -1,12 +1,16 @@
 var patientSummaryCommands = {
     handlePopUp: function () {
-        try {
-            this.waitForElementVisible('@popUpButtonOk', this.api.globals.wait_milliseconds);
-            this.click('@popUpButtonOk');
-            this.waitForElementNotPresent('@popUpButtonOk', this.api.globals.wait_milliseconds);
-        } catch (ex) {
-            console.log("The notification pop-up didn't (dis)appear");
-            console.log(ex);
+        console.log(this.api.globals.version_switch_path.indexOf('ang'));
+        console.log(this.api.globals.version_switch_path === undefined || this.api.globals.version_switch_path.indexOf('ang') !== -1)
+        if (this.api.globals.version_switch_path === undefined || this.api.globals.version_switch_path.indexOf('ang') !== -1) {
+            try {
+                this.waitForElementVisible('@popUpButtonOk', this.api.globals.wait_milliseconds);
+                this.click('@popUpButtonOk');
+                this.waitForElementNotPresent('@popUpButtonOk', this.api.globals.wait_milliseconds);
+            } catch (ex) {
+                console.log("The notification pop-up didn't (dis)appear");
+                console.log(ex);
+            }
         }
     }
 };
