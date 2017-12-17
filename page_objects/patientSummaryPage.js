@@ -81,30 +81,58 @@ module.exports = {
                     selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Problems')]",
                     locateStrategy: 'xpath',
                     elements: {
-                        header: "h3"
+                        header: "h3",
+                        redirectButton: ".btn-board-more"
                     }
                 },
                 contactsBoard: {
                     selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Contacts')]",
                     locateStrategy: 'xpath',
                     elements: {
-                        header: "h3"
+                        header: "h3",
+                        redirectButton: ".btn-board-more"
                     }
                 },
                 allergiesBoard: {
                     selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Allergies')]",
                     locateStrategy: 'xpath',
                     elements: {
-                        header: "h3"
+                        header: "h3",
+                        redirectButton: ".btn-board-more"
                     }
                 },
                 medicationsBoard: {
                     selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Medications')]",
                     locateStrategy: 'xpath',
                     elements: {
-                        header: "h3"
+                        header: "h3",
+                        redirectButton: ".btn-board-more"
                     }
                 }
+            }
+        },
+        allergies: {
+            selector: ".panel-primary",
+            elements: {
+                title: ".panel-heading .panel-title"
+            }
+        },
+        problems: {
+            selector: ".panel-primary",
+            elements: {
+                title: ".panel-heading .panel-title"
+            }
+        },
+        contacts: {
+            selector: ".panel-primary",
+            elements: {
+                title: ".panel-heading .panel-title"
+            }
+        },
+        medication: {
+            selector: ".panel-primary",
+            elements: {
+                title: ".panel-heading .panel-title"
             }
         },
         breadcrumbs: {
