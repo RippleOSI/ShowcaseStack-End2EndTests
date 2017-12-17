@@ -106,6 +106,76 @@ module.exports = {
                     }
                 }
             }
+        },
+        breadcrumbs: {
+            selector: ".breadcrumbs",
+            elements: {
+                patientSummary: {
+                    selector: "*/a[.,'Patient Summary']",
+                    locateStrategy: 'xpath'
+                }
+            }
+        },
+        leftBarMenu: {
+            selector: ".sidebar-nav-list",
+            elements: {
+                patientSummary: {
+                    selector: "li/a[.='Patient Summary']",
+                    locateStrategy: 'xpath'
+                },
+                problems: {
+                    selector: "li/a[.='Problems / Diagnosis']",
+                    locateStrategy: 'xpath'
+                },
+                medications: {
+                    selector: "li/a[.='Medications']",
+                    locateStrategy: 'xpath'
+                },
+                allergies: {
+                    selector: "li/a[.='Allergies']",
+                    locateStrategy: 'xpath'
+                },
+                contacts: {
+                    selector: "li/a[.='Contacts']",
+                    locateStrategy: 'xpath'
+                },
+                clinicalNotes: {
+                    selector: "li/a[.='Clinical Notes']",
+                    locateStrategy: 'xpath'
+                },
+                personalNotes: {
+                    selector: "li/a[.='Personal Notes']",
+                    locateStrategy: 'xpath'
+                },
+                vaccinations: {
+                    selector: "li/a[.='Vaccinations']",
+                    locateStrategy: 'xpath'
+                },
+                testResults: {
+                    selector: "li/a[.='Test Results']",
+                    locateStrategy: 'xpath'
+                },
+                procedures: {
+                    selector: "li/a[.='Procedures']",
+                    locateStrategy: 'xpath'
+                },
+                events: {
+                    selector: "li/a[.='Events']",
+                    locateStrategy: 'xpath'
+                },
+                referrals: {
+                    selector: "li/a[.='Referrals']",
+                    locateStrategy: 'xpath'
+                },
+                mdt: {
+                    selector: "li/a[.='MDT']",
+                    locateStrategy: 'xpath'
+                },
+                orders: {
+                    selector: "li/a[.='Orders']",
+                    locateStrategy: 'xpath'
+                }
+            }
         }
     },
     elements: {
