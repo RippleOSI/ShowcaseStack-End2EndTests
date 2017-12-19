@@ -1,5 +1,5 @@
 module.exports = {
-    'Patient Information page': function (browser) {
+    'Breadcrumbs': function (browser) {
         browser.page.loginPage()
             .login();
 
