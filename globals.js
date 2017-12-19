@@ -2,7 +2,7 @@ var HtmlReporter = require('nightwatch-html-reporter');
 var reporter = new HtmlReporter({
     openBrowser: true,
     reportsDirectory: __dirname + '/reports',
-    themeName: 'cover'
+    hideSuccess: false
 });
 
 module.exports = {
@@ -19,6 +19,8 @@ module.exports = {
      * @param done
      */
     beforeEach: function (browser, done) {
+        console.log("Testing on URL: " + browser.launchUrl);
+
         if (browser.globals.version_switch_host !== undefined) {
             console.log("Switching to " + browser.globals.version_switch_path);
 
