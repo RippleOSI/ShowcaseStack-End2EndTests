@@ -7,11 +7,13 @@ module.exports = {
 
         patientInformationPage.navigate();
 
-        patientInformationPage.section.personalInfo
+        var content = patientInformationPage.section.personalInfo
             .waitForElementVisible('@expandButton', browser.globals.wait_milliseconds)
             .click('@expandButton')
-            .section.content
-            .waitForElementVisible('@firstNameLabel', browser.globals.wait_milliseconds)
+            .section.content;
+        browser.pause(browser.globals.wait_milliseconds);
+
+        content.waitForElementVisible('@firstNameValue', browser.globals.wait_milliseconds)
             .assert.containsText('@firstNameLabel', 'First Name')
             .assert.containsText('@firstNameValue', 'Bob')
             .assert.containsText('@lastNameLabel', 'Last Name')
@@ -19,7 +21,7 @@ module.exports = {
             .assert.containsText('@nhsNoLabel', 'NHS No')
             .assert.containsText('@nhsNoValue', '')
             .assert.containsText('@birthdayLabel', 'Date of Birth')
-            .assert.containsText('@birthdayValue', '27-Nov-2017')
+            .assert.containsText('@birthdayValue', '-')
             .assert.containsText('@genderLabel', 'Gender')
             .assert.containsText('@genderValue', 'Female')
             .assert.containsText('@doctorLabel', 'Doctor')
