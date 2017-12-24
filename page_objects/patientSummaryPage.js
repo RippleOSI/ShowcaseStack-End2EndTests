@@ -114,25 +114,69 @@ module.exports = {
         allergies: {
             selector: ".panel-primary",
             elements: {
-                title: ".panel-heading .panel-title"
+                title: ".panel-heading .panel-title",
+                createButton: ".btn-create",
+                filterButton: ".btn-filter",
+                filterInput: ".panel-filter .form-control",
+                table: "table"
             }
         },
         problems: {
             selector: ".panel-primary",
             elements: {
-                title: ".panel-heading .panel-title"
+                title: ".panel-heading .panel-title",
+                createButton: ".btn-create",
+                filterButton: ".btn-filter",
+                filterInput: ".panel-filter .form-control",
+                table: "table"
+            }
+        },
+        createProblemForm: {
+            selector: ".panel-secondary",
+            elements: {
+                title: ".panel-title",
+                completeButton: ".panel-control .btn-success",
+                problemInput: "#problem",
+                calendar: "input[name~='dateOfOnset']",
+                descriptionInput: "#description"
             }
         },
         contacts: {
             selector: ".panel-primary",
             elements: {
-                title: ".panel-heading .panel-title"
+                title: ".panel-heading .panel-title",
+                createButton: ".btn-create",
+                filterButton: ".btn-filter",
+                filterInput: ".panel-filter .form-control",
+                table: "table"
             }
         },
         medication: {
             selector: ".panel-primary",
             elements: {
-                title: ".panel-heading .panel-title"
+                title: ".panel-heading .panel-title",
+                createButton: ".btn-create",
+                filterButton: ".btn-filter",
+                filterInput: ".panel-filter .form-control"
+            },
+            sections: {
+                table: {
+                    selector: "table"
+                }
+            }
+        },
+        createMedicationForm: {
+            selector: ".panel-secondary",
+            elements: {
+                title: ".panel-title",
+                completeButton: ".panel-control .btn-success",
+                nameInput: "#name",
+                doseInput: "#doseAmount",
+                doseVarCheckBox: "#doseAmountVariable",
+                doseTimingInput: "#doseTiming",
+                doseDirectionsInput: "#doseDirections",
+                routeSelect: "#route",
+                editButton: ".btn-edit"
             }
         },
         breadcrumbs: {
@@ -142,6 +186,27 @@ module.exports = {
                     selector: "*/a[.,'Patient Summary']",
                     locateStrategy: 'xpath'
                 }
+            }
+        },
+        secondaryPanel2: {
+            selector: "//div[contains(@class, 'panel-secondary')][2]",
+            locateStrategy: 'xpath',
+            elements: {
+                body: '.panel-body'
+            }
+        },
+        secondaryPanel3: {
+            selector: "//div[contains(@class, 'panel-secondary')][3]",
+            locateStrategy: 'xpath',
+            elements: {
+                body: '.panel-body'
+            }
+        },
+        secondaryPanel4: {
+            selector: "//div[contains(@class, 'panel-secondary')][4]",
+            locateStrategy: 'xpath',
+            elements: {
+                body: '.panel-body'
             }
         },
         leftBarMenu: {
