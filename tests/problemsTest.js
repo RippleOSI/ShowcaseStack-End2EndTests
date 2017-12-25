@@ -39,8 +39,7 @@ module.exports = {
 
         problems.click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds)
-            // .setValue('@filterInput', 'eth')
-            .setValue('@filterInput', 'ess');
+            .setValue('@filterInput', 'eth');
         browser.pause(browser.globals.wait_milliseconds)
             .useXpath()
             .waitForElementVisible('//td[.="' + name + '"]', browser.globals.wait_milliseconds)
