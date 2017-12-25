@@ -20,8 +20,7 @@ module.exports = {
 
         createProblemForm = patientSummaryPage.section.createProblemForm;
 
-        const name = 'madness';
-        // const name = 'bronchitis';
+        const name = 'bronchitis';
         createProblemForm.waitForElementPresent('@problemInput', browser.globals.wait_milliseconds)
             .setValue('@problemInput', name)
             .click('@calendar');
