@@ -292,7 +292,23 @@ module.exports = {
                 doseDirectionsInput: "#doseDirections",
                 routeSelect: "#route",
                 editButton: ".btn-edit",
-                expandButton: '.btn-toggle-rotate'
+                expandButton: '.btn-toggle-rotate',
+                nameLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[1]",
+                    locateStrategy: 'xpath'
+                },
+                doseLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[2]",
+                    locateStrategy: 'xpath'
+                },
+                timingLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[3]",
+                    locateStrategy: 'xpath'
+                },
+                directionsLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[4]",
+                    locateStrategy: 'xpath'
+                }
             }
         },
         breadcrumbs: {

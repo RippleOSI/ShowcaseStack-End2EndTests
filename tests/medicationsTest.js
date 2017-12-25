@@ -19,11 +19,15 @@ module.exports = {
 
         createMedicationForm = patientSummaryPage.section.createMedicationForm;
 
+        var name = 'Salbutamol 100micrograms/dose breath actuated inhaler CFC free';
+        var dose = '2 puffs';
+        var timing = 'as required for wheeze';
+        var directions = 'Contact GP if using more than 4 times per day';
         createMedicationForm.waitForElementPresent('@nameInput', browser.globals.wait_milliseconds)
-        .setValue('@nameInput', 'Salbutamol 100micrograms/dose breath actuated inhaler CFC free')
-            .setValue('@doseInput', '2 puffs')
-            .setValue('@doseTimingInput', 'as required for wheeze')
-            .setValue('@doseDirectionsInput', 'Contact GP if using more than 4 times per day')
+        .setValue('@nameInput', name)
+            .setValue('@doseInput', dose)
+            .setValue('@doseTimingInput', timing)
+            .setValue('@doseDirectionsInput', directions)
             .click('@routeSelect')
             .waitForElementVisible('option', browser.globals.wait_milliseconds)
             .click('option[value="Po Per Oral"]')
@@ -37,17 +41,31 @@ module.exports = {
             .waitForElementVisible('td[data-th="Name"]', browser.globals.wait_milliseconds)
             .click('td[data-th="Name"]');
 
+        var newName = 'Salbutamol';
+        var newDose = '100micrograms';
+        var newDirections = 'Contact GP if using more than 3 times per day';
+
         createMedicationForm.waitForElementVisible('@title', browser.globals.wait_milliseconds)
+            .waitForElementVisible('@nameLabel', browser.globals.wait_milliseconds)
+            .assert.containsText('@nameLabel', name)
+            .assert.containsText('@doseLabel', dose)
+            .assert.containsText('@timingLabel', timing)
+            .assert.containsText('@directionsLabel', directions)
             .click('@editButton')
             .waitForElementPresent('@nameInput', browser.globals.wait_milliseconds)
             .clearValue('@nameInput')
-            .setValue('@nameInput', 'Salbutamol')
+            .setValue('@nameInput', newName)
             .clearValue('@doseInput')
-            .setValue('@doseInput', '100micrograms')
+            .setValue('@doseInput', newDose)
             .clearValue('@doseDirectionsInput')
-            .setValue('@doseDirectionsInput', 'Contact GP if using more than 3 times per day')
+            .setValue('@doseDirectionsInput', newDirections)
             .click('@completeButton')
-            .waitForElementNotPresent('@nameInput', browser.globals.wait_milliseconds);
+            .waitForElementNotPresent('@nameInput', browser.globals.wait_milliseconds)
+            .waitForElementVisible('@nameLabel', browser.globals.wait_milliseconds)
+            .assert.containsText('@nameLabel', newName)
+            .assert.containsText('@doseLabel', newDose)
+            .assert.containsText('@timingLabel', timing)
+            .assert.containsText('@directionsLabel', newDirections);
 
         patientSummaryPage.section.secondaryPanel2.assert.hidden('@body');
         patientSummaryPage.section.secondaryPanel3.assert.hidden('@body');
