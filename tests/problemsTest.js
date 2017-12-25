@@ -13,12 +13,12 @@ module.exports = {
         leftBarMenu.waitForElementVisible('@problems', browser.globals.wait_milliseconds)
             .click('@problems');
 
-        problems = patientSummaryPage.section.problems;
+        var problems = patientSummaryPage.section.problems;
         browser.pause(browser.globals.wait_milliseconds);
         problems.waitForElementVisible('@createButton', browser.globals.wait_milliseconds)
             .click('@createButton');
 
-        createProblemForm = patientSummaryPage.section.createProblemForm;
+        var createProblemForm = patientSummaryPage.section.createProblemForm;
 
         const name = 'bronchitis';
         createProblemForm.waitForElementPresent('@problemInput', browser.globals.wait_milliseconds)
