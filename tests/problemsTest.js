@@ -60,7 +60,7 @@ module.exports = {
             .click('@editButton')
             .waitForElementPresent('@problemInput', browser.globals.wait_milliseconds)
             .setValue('@problemInput', chronic)
-            .setValue('@descriptionEditInput', chronic);
+            .setValue('@descriptionInput', chronic);
         browser.pause(browser.globals.wait_milliseconds);
         browser.execute("window.scrollTo(0,document.body.scrollHeight);"); //scroll down
         createProblemForm.click('@completeButton')
