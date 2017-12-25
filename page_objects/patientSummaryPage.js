@@ -180,7 +180,26 @@ module.exports = {
                 completeButton: ".panel-control .btn-success",
                 problemInput: "#problem",
                 calendar: "input[name~='dateOfOnset']",
-                descriptionInput: "#description"
+                descriptionInput: "#description",
+                descriptionEditInput: "#text",
+                terminologyInput: "#terminology",
+                editButton: ".btn-edit",
+                problemLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[1]",
+                    locateStrategy: 'xpath'
+                },
+                dateLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[2]",
+                    locateStrategy: 'xpath'
+                },
+                descriptionLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[3]",
+                    locateStrategy: 'xpath'
+                },
+                terminologyLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[4]",
+                    locateStrategy: 'xpath'
+                }
             }
         },
         contacts: {
