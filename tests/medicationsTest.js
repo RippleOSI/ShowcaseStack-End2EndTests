@@ -17,7 +17,7 @@ module.exports = {
         medication.waitForElementVisible('@createButton', browser.globals.wait_milliseconds)
             .click('@createButton');
 
-        createMedicationForm = patientSummaryPage.section.createMedicationForm;
+        var createMedicationForm = patientSummaryPage.section.createMedicationForm;
 
         var name = 'Salbutamol 100micrograms/dose breath actuated inhaler CFC free';
         var dose = '2 puffs';

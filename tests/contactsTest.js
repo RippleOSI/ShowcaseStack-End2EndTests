@@ -19,7 +19,7 @@ module.exports = {
         contacts.waitForElementVisible('@createButton', browser.globals.wait_milliseconds)
             .click('@createButton');
 
-        createContactForm = patientSummaryPage.section.createContactForm;
+        var createContactForm = patientSummaryPage.section.createContactForm;
 
         const name = 'Evan Smith';
 

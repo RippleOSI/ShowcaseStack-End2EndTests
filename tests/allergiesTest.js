@@ -17,7 +17,7 @@ module.exports = {
         allergies.waitForElementVisible('@createButton', browser.globals.wait_milliseconds)
             .click('@createButton');
 
-        createAllergyForm = patientSummaryPage.section.createAllergyForm;
+        var createAllergyForm = patientSummaryPage.section.createAllergyForm;
 
         var cause = 'allergy to Aspirin';
         var reaction = 'Fever';
