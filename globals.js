@@ -124,11 +124,8 @@ module.exports = {
 
     pickDate: function (browser, dateString) {
         var dateFormat = require('dateformat');
-        console.log(dateString);
         var monthAndYear = dateFormat(dateString, "mmmm yyyy");
         var day = dateFormat(dateString, "dd");
-        console.log(monthAndYear);
-        console.log(day);
 
         var datePicker = browser.page.reactDatePicker();
         var daySelector = '//div[contains(@class, "react-datepicker__day")][.="' + day + '"]';
@@ -145,10 +142,7 @@ module.exports = {
 
         function spinMonths(index) {
             if (index < 20) {
-                console.log(index);
-
                 datePicker.getText('@currentMonth', function (result) {
-                    console.log(result);
                     if (result.value === monthAndYear) {
                         browser.useXpath().click(daySelector);
                     } else {
