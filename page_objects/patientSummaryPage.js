@@ -372,6 +372,43 @@ module.exports = {
                 }
             }
         },
+        vaccinations: {
+            selector: ".panel-primary",
+            elements: {
+                title: ".panel-heading .panel-title",
+                createButton: ".btn-create",
+                filterButton: ".btn-filter",
+                filterInput: ".panel-filter .form-control"
+            }
+        },
+        createVaccinationForm: {
+            selector: ".panel-secondary",
+            elements: {
+                title: ".panel-title",
+                completeButton: ".panel-control .btn-success",
+                nameInput: "#name",
+                calendar: "#date",
+                serialInput: "#seriesNumber",
+                commentInput: "#comment",
+                editButton: ".btn-edit",
+                nameLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[1]",
+                    locateStrategy: 'xpath'
+                },
+                dateLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[2]",
+                    locateStrategy: 'xpath'
+                },
+                serialLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[3]",
+                    locateStrategy: 'xpath'
+                },
+                commentLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[5]",
+                    locateStrategy: 'xpath'
+                }
+            }
+        },
         breadcrumbs: {
             selector: ".breadcrumbs",
             elements: {
