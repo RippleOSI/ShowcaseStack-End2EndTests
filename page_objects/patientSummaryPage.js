@@ -119,6 +119,40 @@ module.exports = {
                 filterButton: ".btn-filter",
                 filterInput: ".panel-filter .form-control",
                 table: "table"
+            },
+            sections: {
+                table: {
+                    selector: "table"
+                }
+            }
+        },
+        createAllergyForm: {
+            selector: ".panel-secondary",
+            elements: {
+                title: ".panel-title",
+                completeButton: ".panel-control .btn-success",
+                causeInput: "#cause",
+                reactionInput: "#reaction",
+                terminologyInput: "#causeTerminology",
+                editButton: ".btn-edit",
+                expandButton: '.btn-toggle-rotate'
+            }
+        },
+        allergiesMetadata: {
+            selector: "//div[contains(@class, 'panel-secondary')][2]",
+            locateStrategy: 'xpath',
+            elements: {
+                expandButton: '.btn-toggle-rotate',
+                title: ".panel-title",
+                editButton: ".btn-edit",
+                causeCodeLabel: {
+                    selector: "div//div[1]/div[contains(@class,'form-control-static')]",
+                    locateStrategy: 'xpath'
+                },
+                terminologyLabel: {
+                    selector: "div//div[2]/div[contains(@class, 'form-control-static')]",
+                    locateStrategy: 'xpath'
+                }
             }
         },
         problems: {
@@ -176,7 +210,8 @@ module.exports = {
                 doseTimingInput: "#doseTiming",
                 doseDirectionsInput: "#doseDirections",
                 routeSelect: "#route",
-                editButton: ".btn-edit"
+                editButton: ".btn-edit",
+                expandButton: '.btn-toggle-rotate'
             }
         },
         breadcrumbs: {
@@ -192,6 +227,7 @@ module.exports = {
             selector: "//div[contains(@class, 'panel-secondary')][2]",
             locateStrategy: 'xpath',
             elements: {
+                expandButton: '.btn-toggle-rotate',
                 body: '.panel-body'
             }
         },
