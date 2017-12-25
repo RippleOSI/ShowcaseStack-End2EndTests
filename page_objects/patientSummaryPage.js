@@ -311,6 +311,48 @@ module.exports = {
                 }
             }
         },
+        personalNotes: {
+            selector: ".panel-primary",
+            elements: {
+                title: ".panel-heading .panel-title",
+                createButton: ".btn-create",
+                filterButton: ".btn-filter",
+                filterInput: ".panel-filter .form-control",
+                table: "table"
+            },
+            sections: {
+                table: {
+                    selector: "table"
+                }
+            }
+        },
+        createPersonalNoteForm: {
+            selector: ".panel-secondary",
+            elements: {
+                title: ".panel-title",
+                completeButton: ".panel-control .btn-success",
+                typeInput: "#noteType",
+                noteInput: "#notes",
+                editButton: ".btn-edit",
+                expandButton: '.btn-toggle-rotate',
+                typeLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[1]",
+                    locateStrategy: 'xpath'
+                },
+                noteLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[2]",
+                    locateStrategy: 'xpath'
+                },
+                dateLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[4]",
+                    locateStrategy: 'xpath'
+                },
+                sourceLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[5]",
+                    locateStrategy: 'xpath'
+                }
+            }
+        },
         breadcrumbs: {
             selector: ".breadcrumbs",
             elements: {
