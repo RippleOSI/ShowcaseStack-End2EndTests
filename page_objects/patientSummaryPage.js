@@ -135,7 +135,15 @@ module.exports = {
                 reactionInput: "#reaction",
                 terminologyInput: "#causeTerminology",
                 editButton: ".btn-edit",
-                expandButton: '.btn-toggle-rotate'
+                expandButton: '.btn-toggle-rotate',
+                causeLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[1]",
+                    locateStrategy: 'xpath'
+                },
+                reactionLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[2]",
+                    locateStrategy: 'xpath'
+                }
             }
         },
         allergiesMetadata: {
