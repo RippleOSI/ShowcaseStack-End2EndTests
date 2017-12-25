@@ -106,7 +106,7 @@ module.exports = {
                 };
                 console.log(options.path);
                 var req = http.request(options, printStatus);
-                req.on("error", function(e) {
+                req.on("error", function (e) {
                     console.log("ERROR: " + e.message);
                 });
 
@@ -120,5 +120,45 @@ module.exports = {
         };
 
         http.get(options, initCallBack);
+    },
+
+    pickDate: function (browser, dateString) {
+        var dateFormat = require('dateformat');
+        console.log(dateString);
+        var monthAndYear = dateFormat(dateString, "mmmm yyyy");
+        var day = dateFormat(dateString, "dd");
+        console.log(monthAndYear);
+        console.log(day);
+
+        var datePicker = browser.page.reactDatePicker();
+        var daySelector = '//div[contains(@class, "react-datepicker__day")][.="' + day + '"]';
+        if (browser.globals.version_switch_path === undefined || browser.globals.version_switch_path.indexOf('ang') !== -1) {
+            datePicker = browser.page.angularDatePicker();
+            daySelector = '//button[contains(@class,"btn-sm")][.="' + day + '"]';
+        }
+
+        var keepGoing = true;
+        var button = "@buttonBack";
+        if (new Date(dateString) > new Date()) {
+            button = "@buttonForward";
+        }
+
+        function spinMonths(index) {
+            if (index < 20) {
+                console.log(index);
+
+                datePicker.getText('@currentMonth', function (result) {
+                    console.log(result);
+                    if (result.value === monthAndYear) {
+                        browser.useXpath().click(daySelector);
+                    } else {
+                        datePicker.click(button);
+                        spinMonths(index + 1);
+                    }
+                })
+            }
+        }
+
+        spinMonths(0);
     }
 };
