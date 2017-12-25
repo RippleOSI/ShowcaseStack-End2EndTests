@@ -183,6 +183,79 @@ module.exports = {
                 filterButton: ".btn-filter",
                 filterInput: ".panel-filter .form-control",
                 table: "table"
+            },
+            sections: {
+                table: {
+                    selector: "table"
+                }
+            }
+        },
+        createContactForm: {
+            selector: ".panel-secondary",
+            elements: {
+                title: ".panel-title",
+                completeButton: ".panel-control .btn-success",
+                nameInput: "#name",
+                relationshipSelect: "#relationship",
+                nextOfKinCheckbox: "label[for='nextOfKin']",
+                relationshipTypeSelect: "#relationshipCode",
+                infoInput: "#contactInformation",
+                noteInput: "#note",
+                editButton: ".btn-edit",
+                expandButton: '.btn-toggle-rotate',
+                nameLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[1]",
+                    locateStrategy: 'xpath'
+                },
+                relationshipLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[2]",
+                    locateStrategy: 'xpath'
+                },
+                relationshipTypeLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[3]",
+                    locateStrategy: 'xpath'
+                },
+                infoLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[4]",
+                    locateStrategy: 'xpath'
+                },
+                nextOfKinLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[5]",
+                    locateStrategy: 'xpath'
+                },
+                noteLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[6]",
+                    locateStrategy: 'xpath'
+                },
+                authorLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[7]",
+                    locateStrategy: 'xpath'
+                },
+                dateLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[8]",
+                    locateStrategy: 'xpath'
+                },
+                sourceLabel: {
+                    selector: "(div//div[contains(@class,'form-control-static')])[9]",
+                    locateStrategy: 'xpath'
+                }
+            }
+        },
+        contactsMetadata: {
+            selector: "//div[contains(@class, 'panel-secondary')][2]",
+            locateStrategy: 'xpath',
+            elements: {
+                expandButton: '.btn-toggle-rotate',
+                title: ".panel-title",
+                editButton: ".btn-edit",
+                relationshipCodeLabel: {
+                    selector: "div//div[1]/div/div[contains(@class,'form-control-static')]",
+                    locateStrategy: 'xpath'
+                },
+                terminologyLabel: {
+                    selector: "div//div[2]/div/div[contains(@class, 'form-control-static')]",
+                    locateStrategy: 'xpath'
+                }
             }
         },
         medication: {
@@ -308,7 +381,7 @@ module.exports = {
         }
     },
     elements: {
-        leftBarMenuToggle : ".btn-toggle-sidebar",
+        leftBarMenuToggle: ".btn-toggle-sidebar",
         popUpButtonOk: ".modal-content .btn-success"
     }
 };
