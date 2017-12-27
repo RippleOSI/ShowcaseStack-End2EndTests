@@ -1,5 +1,5 @@
 module.exports = {
-    'Patient Headings > Allergies': function (browser) {
+    'Patient Headings Allergies': function (browser) {
         browser.page.loginPage()
             .login();
 

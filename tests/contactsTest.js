@@ -1,5 +1,5 @@
 module.exports = {
-    'Patient Headings > Contacts': function (browser) {
+    'Patient Headings Contacts': function (browser) {
         var dateFormat = require('dateformat');
 
         browser.page.loginPage()

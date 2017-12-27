@@ -1,5 +1,5 @@
 module.exports = {
-    'Patient Headings > Personal Notes': function (browser) {
+    'Patient Headings Personal Notes': function (browser) {
         var dateFormat = require('dateformat');
 
         browser.page.loginPage()

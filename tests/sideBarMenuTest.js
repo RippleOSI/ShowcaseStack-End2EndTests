@@ -1,5 +1,5 @@
 module.exports = {
-    'Patient Summary -> Sidebar menu': function (browser) {
+    'Patient Summary Sidebar menu': function (browser) {
         browser.page.loginPage()
             .login();
 
