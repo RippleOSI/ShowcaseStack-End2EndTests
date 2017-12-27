@@ -31,15 +31,14 @@ module.exports = {
         browser.pause(browser.globals.wait_milliseconds);
 
         const description = 'Bronchitis is inflammation of the bronchi in the lungs.';
-        createProblemForm.setValue('@descriptionInput', description)
-            .setValue('@terminologyInput', "no data");
+        createProblemForm.setValue('@descriptionInput', description);
         browser.execute("window.scrollTo(0,document.body.scrollHeight);"); //scroll down
         createProblemForm.click('@completeButton')
             .waitForElementNotPresent('@problemInput', browser.globals.wait_milliseconds);
 
         problems.click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds)
-            .setValue('@filterInput', 'eth');
+            .setValue('@filterInput', 'chi');
         browser.pause(browser.globals.wait_milliseconds)
             .useXpath()
             .waitForElementVisible('//td[.="' + name + '"]', browser.globals.wait_milliseconds)

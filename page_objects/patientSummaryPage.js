@@ -3,6 +3,7 @@ var patientSummaryCommands = {
         if (this.api.globals.version_switch_path === undefined || this.api.globals.version_switch_path.indexOf('ang') !== -1) {
             try {
                 this.waitForElementVisible('@popUpButtonOk', this.api.globals.wait_milliseconds);
+                this.api.pause(this.api.globals.wait_milliseconds);
                 this.click('@popUpButtonOk');
                 this.waitForElementNotPresent('@popUpButtonOk', this.api.globals.wait_milliseconds);
             } catch (ex) {
@@ -227,7 +228,7 @@ module.exports = {
                 nextOfKinCheckbox: "label[for='nextOfKin']",
                 relationshipTypeSelect: "#relationshipCode",
                 infoInput: "#contactInformation",
-                noteInput: "#note",
+                noteInput: "#notes",
                 editButton: ".btn-edit",
                 expandButton: '.btn-toggle-rotate',
                 nameLabel: {
@@ -386,9 +387,9 @@ module.exports = {
             elements: {
                 title: ".panel-title",
                 completeButton: ".panel-control .btn-success",
-                nameInput: "#name",
-                calendar: "#date",
-                serialInput: "#seriesNumber",
+                nameInput: "#vaccinationName",
+                calendar: "#vaccinationDateTime",
+                serialInput: "#series",
                 commentInput: "#comment",
                 editButton: ".btn-edit",
                 nameLabel: {
