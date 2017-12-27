@@ -20,8 +20,7 @@ module.exports = {
 
         var createVaccinationForm = patientSummaryPage.section.createVaccinationForm;
 
-        const name = 'lupus';
-        // const name = 'Hepatitis A';
+        const name = 'Hepatitis A';
         createVaccinationForm.waitForElementPresent('@nameInput', browser.globals.wait_milliseconds)
             .setValue('@nameInput', name)
             .click('@calendar');
@@ -41,8 +40,7 @@ module.exports = {
 
         vaccinations.click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds)
-            // .setValue('@filterInput', ' hepa')
-            .setValue('@filterInput', ' upu');
+            .setValue('@filterInput', ' hepa');
         browser.pause(browser.globals.wait_milliseconds)
             .useXpath()
             .waitForElementVisible('//td[.="' + name + '"]', browser.globals.wait_milliseconds)
