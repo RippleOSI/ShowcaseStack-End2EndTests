@@ -35,7 +35,7 @@
         "marionette": true
       },
       "globals" : {
-        "wait_milliseconds": 15000
+        "wait_milliseconds": 30000
       }
     },
 
