@@ -39,12 +39,6 @@ module.exports = {
             .assert.containsText('@causeLabel', cause)
             .assert.containsText('@reactionLabel', reaction);
 
-        patientSummaryPage.section.allergiesMetadata
-            .waitForElementVisible('@title', browser.globals.wait_milliseconds)
-            .click('@expandButton')
-            .waitForElementVisible('@causeCodeLabel', browser.globals.wait_milliseconds)
-            .assert.visible('@terminologyLabel');
-
         var newCause = 'Antibiotics';
         var newReaction = 'Skin rash';
         createAllergyForm.click('@expandButton')

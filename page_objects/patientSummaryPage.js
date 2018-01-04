@@ -147,23 +147,6 @@ module.exports = {
                 }
             }
         },
-        allergiesMetadata: {
-            selector: "//div[contains(@class, 'panel-secondary')][2]",
-            locateStrategy: 'xpath',
-            elements: {
-                expandButton: '.btn-toggle-rotate',
-                title: ".panel-title",
-                editButton: ".btn-edit",
-                causeCodeLabel: {
-                    selector: "div//div[1]/div[contains(@class,'form-control-static')]",
-                    locateStrategy: 'xpath'
-                },
-                terminologyLabel: {
-                    selector: "div//div[2]/div[contains(@class, 'form-control-static')]",
-                    locateStrategy: 'xpath'
-                }
-            }
-        },
         problems: {
             selector: ".panel-primary",
             elements: {
@@ -265,23 +248,6 @@ module.exports = {
                 },
                 sourceLabel: {
                     selector: "(div//div[contains(@class,'form-control-static')])[9]",
-                    locateStrategy: 'xpath'
-                }
-            }
-        },
-        contactsMetadata: {
-            selector: "//div[contains(@class, 'panel-secondary')][2]",
-            locateStrategy: 'xpath',
-            elements: {
-                expandButton: '.btn-toggle-rotate',
-                title: ".panel-title",
-                editButton: ".btn-edit",
-                relationshipCodeLabel: {
-                    selector: "div//div[1]/div/div[contains(@class,'form-control-static')]",
-                    locateStrategy: 'xpath'
-                },
-                terminologyLabel: {
-                    selector: "div//div[2]/div/div[contains(@class, 'form-control-static')]",
                     locateStrategy: 'xpath'
                 }
             }

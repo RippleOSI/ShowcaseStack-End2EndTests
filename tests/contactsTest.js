@@ -87,14 +87,6 @@ module.exports = {
             .assert.containsText('@nextOfKinLabel', "No")
             .assert.containsText('@noteLabel', newNote);
 
-
-        patientSummaryPage.section.contactsMetadata
-            .waitForElementVisible('@title', browser.globals.wait_milliseconds)
-            .click('@expandButton')
-            .waitForElementVisible('@relationshipCodeLabel', browser.globals.wait_milliseconds)
-            .assert.containsText('@relationshipCodeLabel', 'at0037')
-            .assert.containsText('@terminologyLabel', 'local');
-
         browser.globals.deleteCurrentItem(browser, "contacts");
 
         browser.end();
