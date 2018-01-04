@@ -46,16 +46,6 @@ module.exports = {
         browser.useXpath().waitForElementVisible('//td[.="' + name + '"]', browser.globals.wait_milliseconds)
             .click('//td[.="' + name + '"]');
 
-        patientSummaryPage.section.contactsMetadata
-            .waitForElementVisible('@title', browser.globals.wait_milliseconds)
-            .click('@expandButton');
-        browser.pause(browser.globals.wait_milliseconds);
-        browser.pause(browser.globals.wait_milliseconds);
-        patientSummaryPage.section.contactsMetadata
-            .waitForElementVisible('@relationshipCodeLabel', browser.globals.wait_milliseconds)
-            .assert.containsText('@relationshipCodeLabel', 'at0036')
-            .assert.containsText('@terminologyLabel', 'local');
-
         var newNote = 'works abroad 2 weeks';
         var newInfo = '012345 33452';
         var newName = "Braun Smith";
