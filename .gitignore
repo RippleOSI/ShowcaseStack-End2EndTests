@@ -1,0 +1,12 @@
+# Directories
+node_modules/
+
+# Extensions
+*.gz
+*.log
+*.log*
+*.rar
+*.tar
+
+#IDE generated
+.idea/

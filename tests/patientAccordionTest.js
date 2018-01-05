@@ -1,5 +1,7 @@
 module.exports = {
     'Patient Information (part of Accordion)': function (browser) {
+        var dateFormat = require('dateformat');
+
         browser.page.loginPage()
             .login();
 
@@ -21,7 +23,7 @@ module.exports = {
             .assert.containsText('@nhsNoLabel', 'NHS No')
             .assert.containsText('@nhsNoValue', '9999999000')
             .assert.containsText('@birthdayLabel', 'Date of Birth')
-            .assert.containsText('@birthdayValue', '28-Dec-2017')
+            .assert.containsText('@birthdayValue', dateFormat(new Date(), "dd-mmm-yyyy"))
             .assert.containsText('@genderLabel', 'Gender')
             .assert.containsText('@genderValue', 'Female')
             .assert.containsText('@doctorLabel', 'Doctor')
