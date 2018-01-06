@@ -11,6 +11,8 @@ module.exports = {
 
         patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
 
+        browser.pause(browser.globals.wait_milliseconds_short);
+
         contactsSection = patientSummarySection.section.contactsBoard;
         problemsSection = patientSummarySection.section.problemsBoard;
         allergiesSection = patientSummarySection.section.allergiesBoard;
@@ -24,6 +26,8 @@ module.exports = {
         patientSummarySection.click('@filterButton');
 
         filterMenuSection = patientSummarySection.section.filterMenu;
+
+        browser.pause(browser.globals.wait_milliseconds_shortest);
 
         filterMenuSection.waitForElementVisible('@contactsCheckboxLabel', browser.globals.wait_milliseconds)
             .assert.visible('@problemsCheckboxLabel')
