@@ -14,7 +14,6 @@ module.exports = {
         var patientSummaryPage = browser.page.patientSummaryPage();
 
         browser.pause(browser.globals.wait_milliseconds);
-        browser.pause(browser.globals.wait_milliseconds);
 
         patientSummaryPage.handlePopUp();
 
