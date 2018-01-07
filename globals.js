@@ -73,17 +73,18 @@ module.exports = {
 
             var partsOfUrl = result.value.split("/");
 
-            var deletePath = tab + "/" + String(String(partsOfUrl[partsOfUrl.length - 1]).split("?")[0]);
-            console.log(deletePath);
+            var host = String(partsOfUrl[2]).replace("secure", "");
+            console.log("host: " + host);
 
-            browser.globals.sendDeleteCall(deletePath);
+            var deletePath = tab + "/" + String(String(partsOfUrl[partsOfUrl.length - 1]).split("?")[0]);
+            console.log("path :" + deletePath);
+
+            browser.globals.sendDeleteCall(host, deletePath);
         });
     },
 
-    sendDeleteCall: function (id) {
+    sendDeleteCall: function (host, path) {
         var http = require('http');
-
-        var host = "dev.ripple.foundation";
 
         function printStatus(response) {
             console.log("Got response for deleting stuff: " + response.statusCode);
@@ -98,7 +99,7 @@ module.exports = {
                 console.log("Auth token: " + token);
                 var options = {
                     host: host,
-                    path: "/api/patients/9999999000/" + id,
+                    path: "/api/patients/9999999000/" + path,
                     headers: {
                         Authorization: token
                     },
