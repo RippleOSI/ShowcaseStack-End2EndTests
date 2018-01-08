@@ -118,7 +118,7 @@ module.exports = {
             var deletePath = tab + "/" + String(String(partsOfUrl[partsOfUrl.length - 1]).split("?")[0]);
             console.log("path :" + deletePath);
 
-            browser.globals.sendDeleteCall(host, deletePath);
+            sendDeleteCall(host, deletePath);
         });
     },
 
@@ -191,10 +191,6 @@ module.exports = {
         };
 
         http.get(options, sendGetCall);
-    },
-
-    sendDeleteCall: function (host, path) {
-        sendDeleteCall(host, path);
     },
 
     pickDate: function (browser, dateString) {
