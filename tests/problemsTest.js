@@ -8,6 +8,11 @@ module.exports = {
 
         patientSummaryPage.handlePopUp();
 
+        const tab = "problems";
+        const nameFirstPart = 'bronchitis';
+
+        browser.globals.deleteTestItems(browser, tab, "problem", nameFirstPart);
+
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
 
         leftBarMenu.waitForElementVisible('@problems', browser.globals.wait_milliseconds_shortest)
@@ -21,7 +26,7 @@ module.exports = {
         var createProblemForm = patientSummaryPage.section.createProblemForm;
 
         var time = new Date().getTime();
-        const name = 'bronchitis ' + time;
+        const name = nameFirstPart + ' ' + time;
         createProblemForm.waitForElementPresent('@problemInput', browser.globals.wait_milliseconds_shortest)
             .setValue('@problemInput', name)
             .click('@calendar');
@@ -74,7 +79,7 @@ module.exports = {
             .assert.containsText('@descriptionLabel', newDescription)
             .assert.containsText('@dateLabel', date);
 
-        browser.globals.deleteCurrentItem(browser, "problems");
+        browser.globals.deleteCurrentItem(browser, tab);
 
         browser.end();
     }

@@ -9,6 +9,14 @@ module.exports = {
 
         patientSummaryPage.handlePopUp();
 
+        const tab = "personalnotes";
+
+        const patientEnquiry = 'Patient enquiry';
+        const patientNote = 'Patient Note';
+
+        browser.globals.deleteTestItems(browser, tab, "noteType", patientNote);
+        browser.globals.deleteTestItems(browser, tab, "noteType", patientEnquiry);
+
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
 
         leftBarMenu.waitForElementVisible('@personalNotes', browser.globals.wait_milliseconds_short)
@@ -22,7 +30,7 @@ module.exports = {
         var createPersonalNoteForm = patientSummaryPage.section.createPersonalNoteForm;
 
         var time = new Date().getTime();
-        var type = 'Patient Note ' + time;
+        var type = patientNote + ' ' + time;
         var note = 'A bit poorly today';
         createPersonalNoteForm.waitForElementPresent('@typeInput', browser.globals.wait_milliseconds_short)
             .setValue('@typeInput', type)
@@ -46,7 +54,7 @@ module.exports = {
 
         browser.pause(browser.globals.wait_milliseconds_shortest);
 
-        var newType = 'Patient enquiry ' + time;
+        var newType = patientEnquiry + ' ' + time;
         var newNote = 'Need to ask about home care package';
         createPersonalNoteForm.waitForElementVisible('@typeLabel', browser.globals.wait_milliseconds_short)
             .assert.containsText('@typeLabel', type)
@@ -68,7 +76,7 @@ module.exports = {
             .assert.containsText('@typeLabel', newType)
             .assert.containsText('@noteLabel', newNote);
 
-        browser.globals.deleteCurrentItem(browser, "personalnotes");
+        browser.globals.deleteCurrentItem(browser, tab);
 
         browser.end();
     }

@@ -8,6 +8,13 @@ module.exports = {
 
         patientSummaryPage.handlePopUp();
 
+        const tab = "vaccinations";
+        const newNameFirstPart = 'antigen';
+        const nameFirstPart = 'Hepatitis A';
+
+        browser.globals.deleteTestItems(browser, tab, "vaccinationName", nameFirstPart);
+        browser.globals.deleteTestItems(browser, tab, "vaccinationName", newNameFirstPart);
+
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
 
         leftBarMenu.waitForElementVisible('@vaccinations', browser.globals.wait_milliseconds_short)
@@ -21,7 +28,7 @@ module.exports = {
         var createVaccinationForm = patientSummaryPage.section.createVaccinationForm;
 
         var time = new Date().getTime();
-        const name = 'Hepatitis A ' + time;
+        const name = nameFirstPart+ ' ' + time;
         createVaccinationForm.waitForElementPresent('@nameInput', browser.globals.wait_milliseconds_short)
             .setValue('@nameInput', name)
             .click('@calendar');
@@ -52,7 +59,7 @@ module.exports = {
             .waitForElementVisible('//td[.="' + name + '"]', browser.globals.wait_milliseconds_short)
             .click('//td[.="' + name + '"]');
 
-        const newName = 'antigen ' + time;
+        const newName = newNameFirstPart+ ' ' + time;
         const newComment = 'Immunisation incomplete';
         const newSerial = '3';
         browser.pause(browser.globals.wait_milliseconds_short);
@@ -88,7 +95,7 @@ module.exports = {
             .assert.containsText('@serialLabel', newSerial)
             .assert.containsText('@dateLabel', newDate);
 
-        browser.globals.deleteCurrentItem(browser, "vaccinations");
+        browser.globals.deleteCurrentItem(browser, tab);
 
         browser.end();
     }

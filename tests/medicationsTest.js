@@ -7,6 +7,10 @@ module.exports = {
 
         patientSummaryPage.handlePopUp();
 
+        const tab = "medications";
+        const nameFirstPart = 'Salbutamol';
+        browser.globals.deleteTestItems(browser, tab, "name", nameFirstPart);
+
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
 
         leftBarMenu.waitForElementVisible('@medications', browser.globals.wait_milliseconds_short)
@@ -20,12 +24,12 @@ module.exports = {
         var createMedicationForm = patientSummaryPage.section.createMedicationForm;
 
         var time = new Date().getTime();
-        var name = 'Salbutamol ' + time;
+        var name = nameFirstPart + " " + time;
         var dose = '2 puffs';
         var timing = 'as required for wheeze';
         var directions = 'Contact GP if using more than 4 times per day';
         createMedicationForm.waitForElementPresent('@nameInput', browser.globals.wait_milliseconds_short)
-        .setValue('@nameInput', name)
+            .setValue('@nameInput', name)
             .setValue('@doseInput', dose)
             .setValue('@doseTimingInput', timing)
             .setValue('@doseDirectionsInput', directions)
@@ -79,7 +83,7 @@ module.exports = {
         patientSummaryPage.section.secondaryPanel3.assert.hidden('@body');
         patientSummaryPage.section.secondaryPanel4.assert.hidden('@body');
 
-        browser.globals.deleteCurrentItem(browser, "medications");
+        browser.globals.deleteCurrentItem(browser, tab);
 
         browser.end();
     }
