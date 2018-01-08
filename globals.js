@@ -148,7 +148,7 @@ module.exports = {
 
             response.on("end", function () {
                 var items = JSON.parse(whole);
-                console.log(items);
+                // console.log(items);
                 for (var index = 0; index < items.length; index++) {
                     var itemName = items[index][nameField];
                     // console.log(itemName);
