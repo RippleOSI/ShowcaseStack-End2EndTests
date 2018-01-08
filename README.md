@@ -14,6 +14,7 @@ For Windows
 	* Set path to selenium-standalone-server.jar and chromedriver.exe in nightwatch.json selenium > server_path
 	* Set path to chromedriver.exe in nightwatch.json selenium > cli_args > webdriver.chrome.driver
 * Run 'npm install' command from parent catalog to install the dependencies (nightwatch-html-reporter)
+* Warning nightwatch-html-reporter (version 2.0.4) uses pug library which has a known issue that should be fixed manually: 
 * Fix nightwatch-html-reporter
     * Open node_modules\nightwatch-html-reporter\node_modules\pug\node_modules\pug-code-gen\index.js
     * Scroll to line 813 'attributeBlocks(attributeBlocks) {'
@@ -26,7 +27,7 @@ For Windows
 For macOS: 
 * Install Chrome https://www.google.com/chrome/browser/desktop/index.html
 * Install JDK http://www.oracle.com/technetwork/java/javase/downloads/index.html, latest will do
-* Install node.js and npm https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm (checked for node version 8.9.3 and npm versiob 5.6.0 )
+* Install node.js and npm https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm (checked for node version 8.9.3 and npm version 5.6.0 )
 * Install nightwatch http://nightwatchjs.org/gettingstarted#installation (checked for version 0.9.16)
 * Download selenium standalone server http://selenium-release.storage.googleapis.com/index.html (latest is ok)
 Or 
@@ -37,8 +38,9 @@ selenium-server -port 4444
 * Clone the repository to your machine
 * Configure nightwatch.json file:  
 	* Set path to selenium-standalone-server.jar in "server-path":  (i.e. "server_path" : "/usr/local/Cellar/selenium-server-standalone/3.8.1/libexec/selenium-server-standalone-3.8.1.jar")
-	* Set path to chromedriver in cli_args > “webdriver.chrome.driver” (i.e. "webdriver.chrome.driver" : "/Users/{user}/pulse_tile/chromedriver" )
+	* Set path to chromedriver in cli_args > ï¿½webdriver.chrome.driverï¿½ (i.e. "webdriver.chrome.driver" : "/Users/{user}/pulse_tile/chromedriver" )
 * Run 'npm install' command from parent catalog to install the dependencies (nightwatch-html-reporter)
+* Warning nightwatch-html-reporter (version 2.0.4) uses pug library which has a known issue that should be fixed manually:
 * Fix nightwatch-html-reporter
     * Open node_modules\nightwatch-html-reporter\node_modules\pug\node_modules\pug-code-gen\index.js
     * Scroll to line 813 'attributeBlocks(attributeBlocks) {'
