@@ -5,6 +5,49 @@ var reporter = new HtmlReporter({
     hideSuccess: false
 });
 
+const testPatientPath = "/api/patients/9999999000/";
+
+function printStatus(response) {
+    console.log("Got response for deleting stuff: " + response.statusCode);
+}
+
+function sendDeleteCall (host, path) {
+    var http = require('http');
+
+    function initCallBack(response) {
+        console.log("Got response for init: " + response.statusCode);
+
+        response.on("data", function (chunk) {
+            var text = "" + chunk;
+            var token = text.split(",")[0].split(":")[1].replace(/[{"]/g, "");
+            console.log("Auth token: " + token);
+
+            var options = {
+                host: host,
+                path: testPatientPath + path,
+                headers: {
+                    Authorization: token
+                },
+                method: 'DELETE'
+            };
+            console.log('Deleting: ' + options.host + options.path);
+            var req = http.request(options, printStatus);
+            req.on("error", function (e) {
+                console.log("ERROR: " + e.message);
+            });
+
+            req.end();
+        });
+    }
+
+    var options = {
+        host: host,
+        path: "/api/initialise"
+    };
+
+    http.get(options, initCallBack);
+}
+
 module.exports = {
     reporter: reporter.fn,
 
@@ -25,10 +68,6 @@ module.exports = {
             console.log("Switching to " + browser.globals.version_switch_path);
 
             var http = require('http');
-
-            function printStatus(response) {
-                console.log("Got response for version switch: " + response.statusCode);
-            }
 
             function initCallBack(response) {
                 console.log("Got response for init: " + response.statusCode);
@@ -83,14 +122,45 @@ module.exports = {
         });
     },
 
-    sendDeleteCall: function (host, path) {
+    deleteTestItems: function (browser, tab, nameField, nameValue) {
+        browser.url(function (result) {
+            // return the current url
+            console.log(result.value);
+
+            var partsOfUrl = result.value.split("/");
+
+            var host = String(partsOfUrl[2]).replace("secure", "");
+            console.log("host: " + host);
+
+            browser.globals.deleteAllMatchingName(host, tab, nameField, nameValue);
+        });
+    },
+
+    deleteAllMatchingName: function (host, tab, nameField, nameValue) {
         var http = require('http');
 
-        function printStatus(response) {
-            console.log("Got response for deleting stuff: " + response.statusCode);
+        function parseItemsList(response) {
+            // console.log(response);
+            var whole = "";
+            response.on("data", function (chunk) {
+                whole += "" + chunk;
+            });
+
+            response.on("end", function () {
+                var items = JSON.parse(whole);
+                console.log(items);
+                for (var index = 0; index < items.length; index++) {
+                    var itemName = items[index][nameField];
+                    // console.log(itemName);
+                    if (String(itemName).indexOf(nameValue) === 0) {
+                        console.log("Deleting " + tab + " " + itemName);
+                        sendDeleteCall(host, tab + "/" + items[index].sourceId);
+                    }
+                }
+            });
         }
 
-        function initCallBack(response) {
+        function sendGetCall(response) {
             console.log("Got response for init: " + response.statusCode);
 
             response.on("data", function (chunk) {
@@ -99,14 +169,14 @@ module.exports = {
                 console.log("Auth token: " + token);
                 var options = {
                     host: host,
-                    path: "/api/patients/9999999000/" + path,
+                    path: testPatientPath + tab,
                     headers: {
                         Authorization: token
                     },
-                    method: 'DELETE'
+                    method: 'GET'
                 };
                 console.log(options.path);
-                var req = http.request(options, printStatus);
+                var req = http.request(options, parseItemsList);
                 req.on("error", function (e) {
                     console.log("ERROR: " + e.message);
                 });
@@ -120,7 +190,11 @@ module.exports = {
             path: "/api/initialise"
         };
 
-        http.get(options, initCallBack);
+        http.get(options, sendGetCall);
+    },
+
+    sendDeleteCall: function (host, path) {
+        sendDeleteCall(host, path);
     },
 
     pickDate: function (browser, dateString) {
