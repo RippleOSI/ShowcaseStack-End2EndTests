@@ -38,7 +38,7 @@ selenium-server -port 4444
 * Clone the repository to your machine
 * Configure nightwatch.json file:  
 	* Set path to selenium-standalone-server.jar in "server-path":  (i.e. "server_path" : "/usr/local/Cellar/selenium-server-standalone/3.8.1/libexec/selenium-server-standalone-3.8.1.jar")
-	* Set path to chromedriver in cli_args > �webdriver.chrome.driver� (i.e. "webdriver.chrome.driver" : "/Users/{user}/pulse_tile/chromedriver" )
+	* Set path to chromedriver in cli_args > 'webdriver.chrome.driver' (i.e. "webdriver.chrome.driver" : "/Users/{user}/pulse_tile/chromedriver" )
 * Run 'npm install' command from parent catalog to install the dependencies (nightwatch-html-reporter)
 * Warning nightwatch-html-reporter (version 2.0.4) uses pug library which has a known issue that should be fixed manually:
 * Fix nightwatch-html-reporter
@@ -61,9 +61,9 @@ each pointing to https://securedev.ripple.foundation/ with switching to correspo
 You can easily switch the env you want to run tests on by adding --env env_name to your nightwatch command, i.e. 
 
 1) Angular (dev box):
-nightwatch --env=dev_react
-2) React (dev box):
 nightwatch --env=dev_ang
+2) React (dev box):
+nightwatch --env=dev_react
 3) Showcase box:
 nightwatch
 or
