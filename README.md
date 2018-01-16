@@ -74,3 +74,12 @@ make sure to set
 * "version_switch_host": "dev.ripple.foundation", - host of API calls
 * "version_switch_init_path": "/api/initialise", - to provide authorization
 * "version_switch_path": "/api/ui/version_name" 
+
+# Test Data Deletion Tool
+* From parent catalog cd utils
+* See there are devDeleteList.json and showcaseDeleteList.json files which contain lists of test data items to be deleted correspondingly for dev or showcase
+* Run 'node deleteItems.js devDeleteList.json' to delete test data items specified in devDeleteList.json 
+* Run 'node deleteItems.js showcaseDeleteList.json' to delete test data items specified in showcaseDeleteList.json
+* If you don't specify the .json file, devDeleteList.json would be used by default
+* Note that if you run script from parent catalog it would be 'node util\deleteItems.js util\devDeleteList.json'
+* Note that script execution might take some time depending on server and data base response time

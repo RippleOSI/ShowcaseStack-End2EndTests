@@ -1,0 +1,74 @@
+[
+  {
+    "host": "dev.ripple.foundation",
+    "path": "/api/patients/9999999000/",
+    "tab": "medications",
+    "field": "name",
+    "value": "Salbutamol"
+  },
+  {
+    "host": "dev.ripple.foundation",
+    "path": "/api/patients/9999999000/",
+    "tab": "allergies",
+    "field": "cause",
+    "value": "Antibiotics"
+  },
+  {
+    "host": "dev.ripple.foundation",
+    "path": "/api/patients/9999999000/",
+    "tab": "allergies",
+    "field": "cause",
+    "value": "allergy to Aspirin"
+  },
+  {
+    "host": "dev.ripple.foundation",
+    "path": "/api/patients/9999999000/",
+    "tab": "contacts",
+    "field": "name",
+    "value": "Evan Smith"
+  },
+  {
+    "host": "dev.ripple.foundation",
+    "path": "/api/patients/9999999000/",
+    "tab": "contacts",
+    "field": "name",
+    "value": "Braun Smith"
+  },
+  {
+    "host": "dev.ripple.foundation",
+    "path": "/api/patients/9999999000/",
+    "tab": "personalnotes",
+    "field": "noteType",
+    "value": "Patient enquiry"
+  },
+  {
+    "host": "dev.ripple.foundation",
+    "path": "/api/patients/9999999000/",
+    "tab": "personalnotes",
+    "field": "noteType",
+    "value": "Patient enquiry"
+  },
+  {
+    "host": "dev.ripple.foundation",
+    "path": "/api/patients/9999999000/",
+    "tab": "problems",
+    "field": "problem",
+    "value": "bronchitis"
+  },
+  {
+    "host": "dev.ripple.foundation",
+    "path": "/api/patients/9999999000/",
+    "tab": "vaccinations",
+    "field": "vaccinationName",
+    "value": "antigen"
+  },
+  {
+    "host": "dev.ripple.foundation",
+    "path": "/api/patients/9999999000/",
+    "tab": "vaccinations",
+    "field": "vaccinationName",
+    "value": "Hepatitis A"
+  }
+]
+
+

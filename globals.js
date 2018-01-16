@@ -11,7 +11,7 @@ function printStatus(response) {
     console.log("Got response for deleting stuff: " + response.statusCode);
 }
 
-function sendDeleteCall (host, path) {
+function sendDeleteCall (host, path, tab) {
     var http = require('http');
 
     function initCallBack(response) {
@@ -24,7 +24,7 @@ function sendDeleteCall (host, path) {
 
             var options = {
                 host: host,
-                path: testPatientPath + path,
+                path: path + tab,
                 headers: {
                     Authorization: token
                 },
@@ -118,7 +118,7 @@ module.exports = {
             var deletePath = tab + "/" + String(String(partsOfUrl[partsOfUrl.length - 1]).split("?")[0]);
             console.log("path :" + deletePath);
 
-            sendDeleteCall(host, deletePath);
+            sendDeleteCall(host, testPatientPath, deletePath);
         });
     },
 
@@ -132,11 +132,11 @@ module.exports = {
             var host = String(partsOfUrl[2]).replace("secure", "");
             console.log("host: " + host);
 
-            browser.globals.deleteAllMatchingName(host, tab, nameField, nameValue);
+            browser.globals.deleteAllMatchingName(host, testPatientPath, tab, nameField, nameValue);
         });
     },
 
-    deleteAllMatchingName: function (host, tab, nameField, nameValue) {
+    deleteAllMatchingName: function (host, path, tab, nameField, nameValue) {
         var http = require('http');
 
         function parseItemsList(response) {
@@ -154,7 +154,7 @@ module.exports = {
                     // console.log(itemName);
                     if (String(itemName).indexOf(nameValue) === 0) {
                         console.log("Deleting " + tab + " " + itemName);
-                        sendDeleteCall(host, tab + "/" + items[index].sourceId);
+                        sendDeleteCall(host, path, tab + "/" + items[index].sourceId);
                     }
                 }
             });
