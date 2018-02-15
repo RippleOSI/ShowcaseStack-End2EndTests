@@ -18,17 +18,13 @@ module.exports = {
                 .assert.hidden('@problems')
                 .assert.hidden('@allergies')
                 .assert.hidden('@medications')
-                .assert.hidden('@contacts')
-                .assert.hidden('@personalNotes')
-                .assert.hidden('@vaccinations');
+                .assert.hidden('@contacts');
         } else {
             leftBarMenu.waitForElementNotPresent('@patientSummary', browser.globals.wait_milliseconds)
                 .assert.elementNotPresent('@problems')
                 .assert.elementNotPresent('@allergies')
                 .assert.elementNotPresent('@medications')
-                .assert.elementNotPresent('@contacts')
-                .assert.elementNotPresent('@personalNotes')
-                .assert.elementNotPresent('@vaccinations');
+                .assert.elementNotPresent('@contacts');
         }
 
         browser.end();
