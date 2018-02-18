@@ -83,3 +83,31 @@ make sure to set
 * If you don't specify the .json file, devDeleteList.json would be used by default
 * Note that if you run script from parent catalog it would be 'node util\deleteItems.js util\devDeleteList.json'
 * Note that script execution might take some time depending on server and data base response time
+
+# Jenkins
+* Go to http://138.68.171.243:8080
+* Log in with your account
+* In the center of the screen you see the table of the jobs. There are such jobs:
+	* Showcase Nightwatch Tests
+	* Dev React Nightwatch Tests
+	* Dev Angular Nightwatch Tests
+* Each job pulls code from Github, runs Nightwath tests and sends reports. 
+* You can run the job by clicking on run button in the very right
+* Also jobs are run by cron timer:
+	* Showcase Nightwatch Tests is run Mon-Fri at 12 AM London time
+	* Dev React Nightwatch Tests is run on Thu at 12:30 AM London time
+	* Dev Angular Nightwatch Tests is run on Thu at 1 AM London time
+* After job is done, it will send out a email with test results.
+	* Test reort and build log are attached to the email
+	* Email is sent from gmail acc jenkins.ripple@gmail.com pass: ripple.foundation
+* Jobs are set to wait for each other to finish, so no parallel runs could happen.
+* You can see job details by clicking on its name
+* You can browse working derictory of the job by going to job's details and clicking Working Derictory in the menu on the left. In working derictory there is pulled source code and reports, screenshots of the latest build
+* You can edit jobs settings by going to job's details and clicking Settings in the left meny. 
+	* You can change job's schedule in Triggers section. Cron notation is used, https://crontab.guru
+	* You can edit job's email recepient list in Post-build section > Editable Email Notifications > Project Recepient List
+	* Don't change things unless you know what you are doing
+* You can change Jenkins settings by going to Jenkins home page and clicking Manage Jenkins in the left menu
+	* You can create users by going to Manage Jenkins menu, scrolling to the bottom and selecting Manage Users, further is intuitive
+	* You can change mail setting by going to Manage Jenkins menu > Configuration, scrolling to the bottom and editing Extended Email Notification settings
+* When in doubt - click on a ? icon, it's often placed near changible things
