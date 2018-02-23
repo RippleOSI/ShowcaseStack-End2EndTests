@@ -16,6 +16,7 @@ module.exports = {
 
         patientSummaryPage.handlePopUp();
 
+        browser.pause(browser.globals.wait_milliseconds_shortest);
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
 
         leftBarMenu.waitForElementVisible('@contacts', browser.globals.wait_milliseconds_short)

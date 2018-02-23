@@ -13,6 +13,7 @@ module.exports = {
 
         browser.globals.deleteTestItems(browser, tab, "problem", nameFirstPart);
 
+        browser.pause(browser.globals.wait_milliseconds_shortest);
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
 
         leftBarMenu.waitForElementVisible('@problems', browser.globals.wait_milliseconds_shortest)

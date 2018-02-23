@@ -7,6 +7,7 @@ module.exports = {
         browser.page.patientSummaryPage()
             .handlePopUp();
 
+        browser.pause(browser.globals.wait_milliseconds_shortest);
         var topBar = browser.page.topBar();
 
         topBar.waitForElementVisible('@userButton', browser.globals.wait_milliseconds)

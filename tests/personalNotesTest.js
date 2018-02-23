@@ -17,6 +17,7 @@ module.exports = {
         browser.globals.deleteTestItems(browser, tab, "noteType", patientNote);
         browser.globals.deleteTestItems(browser, tab, "noteType", patientEnquiry);
 
+        browser.pause(browser.globals.wait_milliseconds_shortest);
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
 
         leftBarMenu.waitForElementVisible('@personalNotes', browser.globals.wait_milliseconds_short)

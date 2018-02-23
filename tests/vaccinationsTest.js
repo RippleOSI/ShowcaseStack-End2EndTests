@@ -15,6 +15,7 @@ module.exports = {
         browser.globals.deleteTestItems(browser, tab, "vaccinationName", nameFirstPart);
         browser.globals.deleteTestItems(browser, tab, "vaccinationName", newNameFirstPart);
 
+        browser.pause(browser.globals.wait_milliseconds_shortest);
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
 
         leftBarMenu.waitForElementVisible('@vaccinations', browser.globals.wait_milliseconds_short)

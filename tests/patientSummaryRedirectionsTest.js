@@ -6,6 +6,7 @@ module.exports = {
         var patientSummaryPage = browser.page.patientSummaryPage();
 
         patientSummaryPage.handlePopUp();
+        browser.pause(browser.globals.wait_milliseconds_shortest);
 
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
 

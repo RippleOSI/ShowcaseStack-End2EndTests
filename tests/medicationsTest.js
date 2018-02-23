@@ -11,6 +11,7 @@ module.exports = {
         const nameFirstPart = 'Salbutamol';
         browser.globals.deleteTestItems(browser, tab, "name", nameFirstPart);
 
+        browser.pause(browser.globals.wait_milliseconds_shortest);
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
 
         leftBarMenu.waitForElementVisible('@medications', browser.globals.wait_milliseconds_short)

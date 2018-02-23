@@ -9,6 +9,7 @@ module.exports = {
 
         patientInformationPage.navigate();
 
+        browser.pause(browser.globals.wait_milliseconds_shortest);
         var content = patientInformationPage.section.personalInfo
             .waitForElementVisible('@expandButton', browser.globals.wait_milliseconds)
             .click('@expandButton')

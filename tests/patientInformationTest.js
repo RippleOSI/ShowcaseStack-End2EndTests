@@ -7,7 +7,7 @@ module.exports = {
 
         patientInformationPage.navigate();
 
-
+        browser.pause(browser.globals.wait_milliseconds_shortest);
         patientInformationPage.section.preferences.waitForElementVisible('@title', browser.globals.wait_milliseconds)
             .assert.containsText('@title', 'Application Preferences');
         patientInformationPage.section.personalInfo.assert.containsText('@title', 'Personal Information');
