@@ -5,18 +5,9 @@ module.exports = {
             elements: {
                 avatar: 'div.user-profile-image img',
                 name: '.user-profile-info .name',
-                userType: {
-                    selector: 'div[@class="user-profile-info"]/div[@class="specification"]/div[1]',
-                    locateStrategy: 'xpath'
-                },
-                email: {
-                    selector: 'div[@class="user-profile-info"]/div[@class="specification"]/div[2]',
-                    locateStrategy: 'xpath'
-                },
-                birthday: {
-                    selector: 'div[@class="user-profile-info"]/div[@class="specification"]/div[3]',
-                    locateStrategy: 'xpath'
-                },
+                userType: '.user-profile-info .role',
+                email: '.user-profile-info .email',
+                birthday: '.user-profile-info .birthday',
                 info: {
                     selector: 'div[@class="user-profile-info"]/div[@class="specification"]/div[4]',
                     locateStrategy: 'xpath'
