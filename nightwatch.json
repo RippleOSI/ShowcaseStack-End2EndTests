@@ -37,8 +37,8 @@
       "globals" : {
         "wait_milliseconds_long": 60000,
         "wait_milliseconds": 25000,
-        "wait_milliseconds_short": 8000,
-        "wait_milliseconds_shortest": 4500
+        "wait_milliseconds_short": 15000,
+        "wait_milliseconds_shortest": 10000
       }
     },
 
