@@ -38,7 +38,9 @@
         "wait_milliseconds_long": 60000,
         "wait_milliseconds": 25000,
         "wait_milliseconds_short": 15000,
-        "wait_milliseconds_shortest": 10000
+        "wait_milliseconds_shortest": 8000,
+        "wait_milliseconds_for_scrolling_before": 500,
+        "wait_milliseconds_for_scrolling_after": 1000
       }
     },
 
