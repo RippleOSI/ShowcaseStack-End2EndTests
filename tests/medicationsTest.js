@@ -8,8 +8,11 @@ module.exports = {
           coords.x = coords.x || 0;
           coords.y = coords.y || 0;
 
+          console.log("x " + coords.x + " y " + coords.y);
+
           browser.pause(browser.globals.wait_milliseconds_for_scrolling_before);
           browser.execute('window.scrollTo(' + coords.x + ', ' + coords.y + ')');
+          console.log("scrolled!");
           browser.pause(browser.globals.wait_milliseconds_for_scrolling_after);
         }
 
