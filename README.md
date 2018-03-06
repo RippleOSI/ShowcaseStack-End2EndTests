@@ -111,3 +111,4 @@ make sure to set
 	* You can create users by going to Manage Jenkins menu, scrolling to the bottom and selecting Manage Users, further is intuitive
 	* You can change mail setting by going to Manage Jenkins menu > Configuration, scrolling to the bottom and editing Extended Email Notification settings
 * When in doubt - click on a ? icon, it's often placed near changible things
+* Last, but not least. Each jenkins job copies /home/rippletest/nightwatch.json to it's workspace. This is required to preserve path relative to jenkins machine. So if you change something in nightwatch.js file in code you should ssh to jenkins machine and do the changes in mentioned file too.
