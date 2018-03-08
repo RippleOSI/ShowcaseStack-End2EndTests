@@ -42,7 +42,7 @@ module.exports = {
         browser.globals.pickDate(browser, date);
         browser.pause(browser.globals.wait_milliseconds_shortest);
 
-        const description = 'Bronchitis is inflammation of the bronchi in the lungs.';
+        const description = 'bronchitis_is_inflammation';
         createProblemForm.setValue('@descriptionInput', description);
         browser.execute("window.scrollTo(0,document.body.scrollHeight);"); //scroll down
         createProblemForm.click('@completeButton')

@@ -14,7 +14,7 @@ module.exports = {
 
         const tab = "vaccinations";
         const newNameFirstPart = 'antigen';
-        const nameFirstPart = 'Hepatitis_A';
+        const nameFirstPart = 'hepatitis_a';
 
         browser.globals.deleteTestItems(browser, tab, "vaccinationName", nameFirstPart);
         browser.globals.deleteTestItems(browser, tab, "vaccinationName", newNameFirstPart);
@@ -44,7 +44,7 @@ module.exports = {
         browser.globals.pickDate(browser, date);
         browser.pause(browser.globals.wait_milliseconds_shortest);
 
-        const comment = 'Immunisation complete';
+        const comment = 'immunisation_complete';
         const serial = "2";
         createVaccinationForm.setValue('@commentInput', comment)
             .setValue('@serialInput', serial);
@@ -67,7 +67,7 @@ module.exports = {
             .click('//td[.="' + name + '"]');
 
         const newName = newNameFirstPart;
-        const newComment = 'Immunisation_incomplete';
+        const newComment = 'immunisation_incomplete';
         const newSerial = '3';
         browser.pause(browser.globals.wait_milliseconds_short);
         browser.pause(browser.globals.wait_milliseconds_short);

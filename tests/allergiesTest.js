@@ -15,8 +15,8 @@ module.exports = {
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
 
         const tab = "allergies";
-        const newCauseFirstPart = 'Antibiotics';
-        const causeFirstPart = 'Hepatitis';
+        const newCauseFirstPart = 'antibiotics';
+        const causeFirstPart = 'hepatitis';
 
         browser.globals.deleteTestItems(browser, tab, "cause", causeFirstPart);
         browser.globals.deleteTestItems(browser, tab, "cause", newCauseFirstPart);
@@ -33,7 +33,7 @@ module.exports = {
         var createAllergyForm = patientSummaryPage.section.createAllergyForm;
 
         var cause = causeFirstPart;
-        var reaction = 'Fever';
+        var reaction = 'fever';
         createAllergyForm.waitForElementPresent('@causeInput', browser.globals.wait_milliseconds_short)
             .setValue('@causeInput', cause)
             .setValue('@reactionInput', reaction)
@@ -62,7 +62,7 @@ module.exports = {
             .assert.containsText('@reactionLabel', reaction);
 
         var newCause = newCauseFirstPart;
-        var newReaction = 'Skin rash';
+        var newReaction = 'skin_rash';
         createAllergyForm.click('@expandButton')
             .waitForElementVisible('@editButton', browser.globals.wait_milliseconds_short)
             .getLocationInView('@editButton', scrollPage(browser))

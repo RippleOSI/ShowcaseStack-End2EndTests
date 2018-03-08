@@ -12,7 +12,7 @@ module.exports = {
         patientSummaryPage.handlePopUp();
 
         const tab = "medications";
-        const nameFirstPart = 'Salbutamol';
+        const nameFirstPart = 'salbutamol';
         browser.globals.deleteTestItems(browser, tab, "name", nameFirstPart);
 
         browser.pause(browser.globals.wait_milliseconds_shortest);
@@ -30,9 +30,9 @@ module.exports = {
         var createMedicationForm = patientSummaryPage.section.createMedicationForm;
 
         var name = nameFirstPart;
-        var dose = '2-puffs';
-        var timing = 'Required-for-wheeze';
-        var directions = 'Contact-GP-4';
+        var dose = '2_puffs';
+        var timing = 'required_for_wheeze';
+        var directions = 'contact_gp_4';
         createMedicationForm.waitForElementPresent('@nameInput', browser.globals.wait_milliseconds_short)
             .setValue('@nameInput', name)
             .setValue('@doseInput', dose)
@@ -60,9 +60,9 @@ module.exports = {
             .getLocationInView('td[data-th="Name"]', scrollPage(browser))
             .click('td[data-th="Name"]');
 
-        var newName = 'Salbutamol-100micrograms';
+        var newName = 'salbutamol_100micrograms';
         var newDose = '100micrograms';
-        var newDirections = 'Contact-GP';
+        var newDirections = 'contact_gp';
 
         createMedicationForm.waitForElementVisible('@title', browser.globals.wait_milliseconds_short)
             .waitForElementVisible('@nameLabel', browser.globals.wait_milliseconds_short)

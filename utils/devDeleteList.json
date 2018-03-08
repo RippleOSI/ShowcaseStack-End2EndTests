@@ -4,49 +4,49 @@
     "path": "/api/patients/9999999000/",
     "tab": "medications",
     "field": "name",
-    "value": "Salbutamol"
+    "value": "salbutamol"
   },
   {
     "host": "dev.ripple.foundation",
     "path": "/api/patients/9999999000/",
     "tab": "allergies",
     "field": "cause",
-    "value": "Antibiotics"
+    "value": "antibiotics"
   },
   {
     "host": "dev.ripple.foundation",
     "path": "/api/patients/9999999000/",
     "tab": "allergies",
     "field": "cause",
-    "value": "Hepatitis"
+    "value": "hepatitis"
   },
   {
     "host": "dev.ripple.foundation",
     "path": "/api/patients/9999999000/",
     "tab": "contacts",
     "field": "name",
-    "value": "Evan"
+    "value": "evan"
   },
   {
     "host": "dev.ripple.foundation",
     "path": "/api/patients/9999999000/",
     "tab": "contacts",
     "field": "name",
-    "value": "Braun"
+    "value": "braun"
   },
   {
     "host": "dev.ripple.foundation",
     "path": "/api/patients/9999999000/",
     "tab": "personalnotes",
     "field": "noteType",
-    "value": "Patient-enquiry"
+    "value": "patient-enquiry"
   },
   {
     "host": "dev.ripple.foundation",
     "path": "/api/patients/9999999000/",
     "tab": "personalnotes",
     "field": "noteType",
-    "value": "Patient-enquiry"
+    "value": "patient-enquiry"
   },
   {
     "host": "dev.ripple.foundation",
@@ -67,7 +67,7 @@
     "path": "/api/patients/9999999000/",
     "tab": "vaccinations",
     "field": "vaccinationName",
-    "value": "Hepatitis_A"
+    "value": "hepatitis_a"
   }
 ]
 

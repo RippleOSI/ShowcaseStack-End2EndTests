@@ -12,8 +12,8 @@ module.exports = {
         var patientSummaryPage = browser.page.patientSummaryPage();
 
         const tab = "contacts";
-        const newNameFirstPart = 'Braun';
-        const nameFirstPart = 'Evan';
+        const newNameFirstPart = 'braun';
+        const nameFirstPart = 'evan';
 
         browser.globals.deleteTestItems(browser, tab, "name", nameFirstPart);
         browser.globals.deleteTestItems(browser, tab, "name", newNameFirstPart);
@@ -49,9 +49,8 @@ module.exports = {
         createContactForm.getLocationInView('@nameInput', scrollPage(browser))
             .click('@nameInput')
             .click('@nextOfKinCheckbox')
-            .setValue('@infoInput', '012345 33466')
-            .setValue('@noteInput', 'works abroad');
-        browser.execute("window.scrollTo(0,document.body.scrollHeight);"); //scroll down
+            .setValue('@infoInput', '01234533')
+            .setValue('@noteInput', 'works_abroad');
         createContactForm.getLocationInView('@completeButton', scrollPage(browser))
             .click('@completeButton')
             .waitForElementNotPresent('@nameInput', browser.globals.wait_milliseconds_short);
@@ -68,17 +67,17 @@ module.exports = {
         browser.useXpath().waitForElementVisible('//td[.="' + name + '"]', browser.globals.wait_milliseconds_short)
             .click('//td[.="' + name + '"]');
 
-        var newNote = 'works abroad 2 weeks';
-        var newInfo = '012345 33452';
+        var newNote = 'works_abroad_2_weeks';
+        var newInfo = '01234544';
         var newName = newNameFirstPart;
         createContactForm.click('@expandButton')
             .waitForElementVisible('@nameLabel', browser.globals.wait_milliseconds_short)
             .assert.containsText('@nameLabel', name)
             .assert.containsText('@relationshipLabel', "Husband")
             .assert.containsText('@relationshipTypeLabel', "Informal carer")
-            .assert.containsText('@infoLabel', "012345 33466")
+            .assert.containsText('@infoLabel', "01234533")
             .assert.containsText('@nextOfKinLabel', "Yes")
-            .assert.containsText('@noteLabel', "works abroad")
+            .assert.containsText('@noteLabel', "works_abroad")
             .assert.containsText('@authorLabel', "@")
             // .assert.containsText('@authorLabel', "bob.smith@gmail.com")
             .assert.containsText('@dateLabel', dateFormat(new Date(), "dd-mmm-yyyy"))
@@ -99,8 +98,6 @@ module.exports = {
             .clearValue('@noteInput')
             .setValue('@noteInput', newNote)
             .getLocationInView('@completeButton', scrollPage(browser));
-        browser.execute("window.scrollTo(0,document.body.scrollHeight);"); //scroll down
-        browser.pause(browser.globals.wait_milliseconds_short);
         browser.pause(browser.globals.wait_milliseconds_short);
         createContactForm.getLocationInView('@completeButton', scrollPage(browser)).click('@completeButton');
 
