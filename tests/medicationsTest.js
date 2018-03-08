@@ -12,7 +12,7 @@ module.exports = {
         patientSummaryPage.handlePopUp();
 
         const tab = "medications";
-        const nameFirstPart = 'salbutamol';
+        const nameFirstPart = 'ventolin';
         browser.globals.deleteTestItems(browser, tab, "name", nameFirstPart);
 
         browser.pause(browser.globals.wait_milliseconds_shortest);
@@ -60,7 +60,7 @@ module.exports = {
             .getLocationInView('td[data-th="Name"]', scrollPage(browser))
             .click('td[data-th="Name"]');
 
-        var newName = 'salbutamol_100micrograms';
+        var newName = 'ventolin_100micrograms';
         var newDose = '100micrograms';
         var newDirections = 'contact_gp';
 

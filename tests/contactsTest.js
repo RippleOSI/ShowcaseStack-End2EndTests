@@ -49,7 +49,7 @@ module.exports = {
         createContactForm.getLocationInView('@nameInput', scrollPage(browser))
             .click('@nameInput')
             .click('@nextOfKinCheckbox')
-            .setValue('@infoInput', '01234533')
+            .setValue('@infoInput', 'contact_info')
             .setValue('@noteInput', 'works_abroad');
         createContactForm.getLocationInView('@completeButton', scrollPage(browser))
             .click('@completeButton')
@@ -67,15 +67,15 @@ module.exports = {
         browser.useXpath().waitForElementVisible('//td[.="' + name + '"]', browser.globals.wait_milliseconds_short)
             .click('//td[.="' + name + '"]');
 
-        var newNote = 'works_abroad_2_weeks';
-        var newInfo = '01234544';
+        var newNote = 'works_abroad_two_weeks';
+        var newInfo = 'contact_info_new';
         var newName = newNameFirstPart;
         createContactForm.click('@expandButton')
             .waitForElementVisible('@nameLabel', browser.globals.wait_milliseconds_short)
             .assert.containsText('@nameLabel', name)
             .assert.containsText('@relationshipLabel', "Husband")
             .assert.containsText('@relationshipTypeLabel', "Informal carer")
-            .assert.containsText('@infoLabel', "01234533")
+            .assert.containsText('@infoLabel', "contact_info")
             .assert.containsText('@nextOfKinLabel', "Yes")
             .assert.containsText('@noteLabel', "works_abroad")
             .assert.containsText('@authorLabel', "@")
