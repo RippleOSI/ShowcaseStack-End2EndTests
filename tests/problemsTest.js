@@ -1,8 +1,12 @@
+const scrollPage = require('../utils/scrollPage.js');
+
 module.exports = {
     'Patient Headings Problems/Diagnosis': function (browser) {
 
         browser.page.loginPage()
             .login();
+
+        browser.resizeWindow(1920, 1080);
 
         var patientSummaryPage = browser.page.patientSummaryPage();
 
@@ -22,6 +26,7 @@ module.exports = {
         var problems = patientSummaryPage.section.problems;
         browser.pause(browser.globals.wait_milliseconds_shortest);
         problems.waitForElementVisible('@createButton', browser.globals.wait_milliseconds_shortest)
+            .getLocationInView('@createButton', scrollPage(browser))
             .click('@createButton');
 
         var createProblemForm = patientSummaryPage.section.createProblemForm;
@@ -30,6 +35,7 @@ module.exports = {
         const name = nameFirstPart + ' ' + time;
         createProblemForm.waitForElementPresent('@problemInput', browser.globals.wait_milliseconds_shortest)
             .setValue('@problemInput', name)
+            .getLocationInView('@calendar', scrollPage(browser))
             .click('@calendar');
         browser.pause(browser.globals.wait_milliseconds_shortest);
 
@@ -48,6 +54,7 @@ module.exports = {
         browser.pause(browser.globals.wait_milliseconds_shortest);
 
         problems.waitForElementVisible('@filterButton', browser.globals.wait_milliseconds_shortest)
+            .getLocationInView('@filterButton', scrollPage(browser))
             .click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds_shortest)
             .setValue('@filterInput', time);
@@ -66,13 +73,14 @@ module.exports = {
             .assert.containsText('@descriptionLabel', description)
             .assert.containsText('@dateLabel', date)
             .assert.visible('@terminologyLabel')
+            .getLocationInView('@editButton', scrollPage(browser))
             .click('@editButton')
             .waitForElementPresent('@problemInput', browser.globals.wait_milliseconds_shortest)
             .setValue('@problemInput', chronic)
             .setValue('@descriptionInput', chronic);
         browser.pause(browser.globals.wait_milliseconds_shortest);
         browser.execute("window.scrollTo(0,document.body.scrollHeight);"); //scroll down
-        createProblemForm.click('@completeButton');
+        createProblemForm.getLocationInView('@completeButton', scrollPage(browser)).click('@completeButton');
         browser.pause(browser.globals.wait_milliseconds);
         createProblemForm.waitForElementNotPresent('@problemInput', browser.globals.wait_milliseconds_shortest)
             .waitForElementVisible('@problemLabel', browser.globals.wait_milliseconds_shortest)

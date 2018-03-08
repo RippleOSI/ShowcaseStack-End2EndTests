@@ -5,6 +5,8 @@ module.exports = {
         browser.page.loginPage()
             .login();
 
+        browser.resizeWindow(1920, 1080);
+
         var patientInformationPage = browser.page.patientInformationPage();
 
         patientInformationPage.navigate();

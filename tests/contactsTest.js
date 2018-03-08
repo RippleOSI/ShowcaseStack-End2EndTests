@@ -1,9 +1,13 @@
+const scrollPage = require('../utils/scrollPage.js');
+
 module.exports = {
     'Patient Headings Contacts': function (browser) {
         var dateFormat = require('dateformat');
 
         browser.page.loginPage()
             .login();
+
+        browser.resizeWindow(1920, 1080);
 
         var patientSummaryPage = browser.page.patientSummaryPage();
 
@@ -25,6 +29,7 @@ module.exports = {
         contacts = patientSummaryPage.section.contacts;
         browser.pause(browser.globals.wait_milliseconds_short);
         contacts.waitForElementVisible('@createButton', browser.globals.wait_milliseconds_short)
+            .getLocationInView('@createButton', scrollPage(browser))
             .click('@createButton');
 
         var createContactForm = patientSummaryPage.section.createContactForm;
@@ -34,18 +39,21 @@ module.exports = {
 
         createContactForm.waitForElementPresent('@nameInput', browser.globals.wait_milliseconds_short)
             .setValue('@nameInput', name)
+            .getLocationInView('@relationshipSelect', scrollPage(browser))
             .click('@relationshipSelect')
             .waitForElementVisible('option', browser.globals.wait_milliseconds_short)
             .click('option[value="Husband"]')
+            .getLocationInView('@relationshipTypeSelect', scrollPage(browser))
             .click('@relationshipTypeSelect')
             .waitForElementVisible('option', browser.globals.wait_milliseconds_short);
         browser.useXpath().click('//option[.="Informal carer"]');
-        createContactForm.click('@nameInput')
+        createContactForm.getLocationInView('@nameInput', scrollPage(browser))
+            .click('@nameInput')
             .click('@nextOfKinCheckbox')
             .setValue('@infoInput', '012345 33466')
             .setValue('@noteInput', 'works abroad');
         browser.execute("window.scrollTo(0,document.body.scrollHeight);"); //scroll down
-        createContactForm.getLocationInView('@completeButton')
+        createContactForm.getLocationInView('@completeButton', scrollPage(browser))
             .click('@completeButton')
             .waitForElementNotPresent('@nameInput', browser.globals.wait_milliseconds_short);
 
@@ -54,6 +62,7 @@ module.exports = {
         browser.pause(browser.globals.wait_milliseconds_shortest);
 
         contacts.waitForElementVisible('@filterButton', browser.globals.wait_milliseconds_shortest)
+            .getLocationInView('@filterButton', scrollPage(browser))
             .click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds_short)
             .setValue('@filterInput', time);
@@ -75,23 +84,26 @@ module.exports = {
             // .assert.containsText('@authorLabel', "bob.smith@gmail.com")
             .assert.containsText('@dateLabel', dateFormat(new Date(), "dd-mmm-yyyy"))
             .assert.containsText('@sourceLabel', "ethercis")
+            .getLocationInView('@editButton', scrollPage(browser))
             .click('@editButton')
             .waitForElementPresent('@nameInput', browser.globals.wait_milliseconds_short)
             .clearValue('@nameInput')
             .setValue('@nameInput', newName)
+            .getLocationInView('@relationshipSelect', scrollPage(browser))
             .click('@relationshipSelect')
             .waitForElementVisible('option', browser.globals.wait_milliseconds_short)
             .click('option[value="Brother"]')
+            .getLocationInView('@nextOfKinCheckbox', scrollPage(browser))
             .click('@nextOfKinCheckbox')
             .clearValue('@infoInput')
             .setValue('@infoInput', newInfo)
             .clearValue('@noteInput')
             .setValue('@noteInput', newNote)
-            .getLocationInView('@completeButton');
+            .getLocationInView('@completeButton', scrollPage(browser));
         browser.execute("window.scrollTo(0,document.body.scrollHeight);"); //scroll down
         browser.pause(browser.globals.wait_milliseconds_short);
         browser.pause(browser.globals.wait_milliseconds_short);
-        createContactForm.click('@completeButton');
+        createContactForm.getLocationInView('@completeButton', scrollPage(browser)).click('@completeButton');
 
         browser.pause(browser.globals.wait_milliseconds);
         createContactForm.waitForElementNotPresent('@nameInput', browser.globals.wait_milliseconds_short)

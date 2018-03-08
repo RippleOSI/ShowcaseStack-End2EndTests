@@ -1,9 +1,13 @@
+const scrollPage = require('../utils/scrollPage.js');
+
 module.exports = {
     'Patient Headings Personal Notes': function (browser) {
         var dateFormat = require('dateformat');
 
         browser.page.loginPage()
             .login();
+
+        browser.resizeWindow(1920, 1080);
 
         var patientSummaryPage = browser.page.patientSummaryPage();
 
@@ -26,6 +30,7 @@ module.exports = {
         personalNotes = patientSummaryPage.section.personalNotes;
         browser.pause(browser.globals.wait_milliseconds_shortest);
         personalNotes.waitForElementVisible('@createButton', browser.globals.wait_milliseconds_shortest)
+            .getLocationInView('@createButton', scrollPage(browser))
             .click('@createButton');
 
         var createPersonalNoteForm = patientSummaryPage.section.createPersonalNoteForm;
@@ -37,6 +42,7 @@ module.exports = {
             .setValue('@typeInput', type)
             .setValue('@noteInput', note)
             // .setValue('@terminologyInput', 'no data')
+            .getLocationInView('@completeButton', scrollPage(browser))
             .click('@completeButton')
             .waitForElementNotPresent('@typeInput', browser.globals.wait_milliseconds_short);
 
@@ -45,6 +51,7 @@ module.exports = {
         browser.pause(browser.globals.wait_milliseconds_shortest);
 
         personalNotes.waitForElementVisible('@filterButton', browser.globals.wait_milliseconds_shortest)
+            .getLocationInView('@filterButton', scrollPage(browser))
             .click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds_shortest)
             .setValue('@filterInput', time);
@@ -62,12 +69,14 @@ module.exports = {
             .assert.containsText('@noteLabel', note)
             .assert.containsText('@dateLabel', dateFormat(new Date(), "dd-mmm-yyyy"))
             .assert.containsText('@sourceLabel', "ethercis")
+            .getLocationInView('@editButton', scrollPage(browser))
             .click('@editButton')
             .waitForElementPresent('@typeInput', browser.globals.wait_milliseconds_short)
             .clearValue('@typeInput')
             .setValue('@typeInput', newType)
             .clearValue('@noteInput')
             .setValue('@noteInput', newNote)
+            .getLocationInView('@completeButton', scrollPage(browser))
             .click('@completeButton');
 
         browser.pause(browser.globals.wait_milliseconds);

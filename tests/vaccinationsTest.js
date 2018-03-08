@@ -1,8 +1,12 @@
+const scrollPage = require('../utils/scrollPage.js');
+
 module.exports = {
     'Patient Headings Vaccinations': function (browser) {
 
         browser.page.loginPage()
             .login();
+
+        browser.resizeWindow(1920, 1080);
 
         var patientSummaryPage = browser.page.patientSummaryPage();
 
@@ -24,6 +28,7 @@ module.exports = {
         var vaccinations = patientSummaryPage.section.vaccinations;
         browser.pause(browser.globals.wait_milliseconds_short);
         vaccinations.waitForElementVisible('@createButton', browser.globals.wait_milliseconds_short)
+            .getLocationInView('@createButton', scrollPage(browser))
             .click('@createButton');
 
         var createVaccinationForm = patientSummaryPage.section.createVaccinationForm;
@@ -32,6 +37,7 @@ module.exports = {
         const name = nameFirstPart+ ' ' + time;
         createVaccinationForm.waitForElementPresent('@nameInput', browser.globals.wait_milliseconds_short)
             .setValue('@nameInput', name)
+            .getLocationInView('@calendar', scrollPage(browser))
             .click('@calendar');
         browser.pause(browser.globals.wait_milliseconds_shortest);
 
@@ -44,7 +50,7 @@ module.exports = {
         createVaccinationForm.setValue('@commentInput', comment)
             .setValue('@serialInput', serial);
         browser.execute("window.scrollTo(0,document.body.scrollHeight);"); //scroll down
-        createVaccinationForm.click('@completeButton')
+        createVaccinationForm.getLocationInView('@completeButton', scrollPage(browser)).click('@completeButton')
             .waitForElementNotPresent('@nameInput', browser.globals.wait_milliseconds_short);
 
         browser.pause(browser.globals.wait_milliseconds_short);
@@ -52,6 +58,7 @@ module.exports = {
         browser.pause(browser.globals.wait_milliseconds_shortest);
 
         vaccinations.waitForElementVisible('@filterButton', browser.globals.wait_milliseconds_shortest)
+            .getLocationInView('@filterButton', scrollPage(browser))
             .click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds_short)
             .setValue('@filterInput', time);
@@ -70,6 +77,7 @@ module.exports = {
             .assert.containsText('@commentLabel', comment)
             .assert.containsText('@dateLabel', date)
             .assert.containsText('@serialLabel', serial)
+            .getLocationInView('@editButton', scrollPage(browser))
             .click('@editButton')
             .waitForElementPresent('@nameInput', browser.globals.wait_milliseconds_short)
             .clearValue('@nameInput')
@@ -78,6 +86,7 @@ module.exports = {
             .setValue('@commentInput', newComment)
             .clearValue('@serialInput')
             .setValue('@serialInput', newSerial)
+            .getLocationInView('@calendar', scrollPage(browser))
             .click('@calendar');
         browser.pause(browser.globals.wait_milliseconds_shortest);
 
@@ -86,7 +95,7 @@ module.exports = {
         browser.pause(browser.globals.wait_milliseconds_shortest);
 
         browser.execute("window.scrollTo(0,document.body.scrollHeight);"); //scroll down
-        createVaccinationForm.click('@completeButton');
+        createVaccinationForm.getLocationInView('@completeButton', scrollPage(browser)).click('@completeButton');
 
         browser.pause(browser.globals.wait_milliseconds);
         createVaccinationForm.waitForElementNotPresent('@nameInput', browser.globals.wait_milliseconds_short)

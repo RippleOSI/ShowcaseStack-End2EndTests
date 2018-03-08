@@ -1,21 +1,17 @@
+const scrollPage = require('../utils/scrollPage.js');
+
 module.exports = {
     'Patient Headings Medications': function (browser) {
         browser.page.loginPage()
             .login();
 
-        function scrollPage(result) {
-          const coords = result.value || { x: 0, y: 0 };
-          coords.x = coords.x || 0;
-          coords.y = coords.y || 0;
-
-          browser.pause(browser.globals.wait_milliseconds_for_scrolling_before);
-          browser.execute('window.scrollTo(' + coords.x + ', ' + coords.y + ')');
-          browser.pause(browser.globals.wait_milliseconds_for_scrolling_after);
-        }
+        browser.resizeWindow(1920, 1080);
 
         var patientSummaryPage = browser.page.patientSummaryPage();
 
         patientSummaryPage.handlePopUp();
+
+        browser.resizeWindow(3000, 3000);
 
         const tab = "medications";
         const nameFirstPart = 'Salbutamol';
@@ -30,7 +26,7 @@ module.exports = {
         medication = patientSummaryPage.section.medication;
         browser.pause(browser.globals.wait_milliseconds_short);
         medication.waitForElementVisible('@createButton', browser.globals.wait_milliseconds_short)
-            .getLocationInView('@createButton', scrollPage)
+            .getLocationInView('@createButton', scrollPage(browser))
             .click('@createButton');
 
         var createMedicationForm = patientSummaryPage.section.createMedicationForm;
@@ -45,11 +41,11 @@ module.exports = {
             .setValue('@doseInput', dose)
             .setValue('@doseTimingInput', timing)
             .setValue('@doseDirectionsInput', directions)
-            .getLocationInView('@routeSelect', scrollPage)
+            .getLocationInView('@routeSelect', scrollPage(browser))
             .click('@routeSelect')
             .waitForElementVisible('option', browser.globals.wait_milliseconds_shortest)
             .click('option[value="Po Per Oral"]')
-            .getLocationInView('@completeButton', scrollPage)
+            .getLocationInView('@completeButton', scrollPage(browser))
             .click('@completeButton')
             .waitForElementNotPresent('@completeButton', browser.globals.wait_milliseconds_short);
 
@@ -58,13 +54,13 @@ module.exports = {
         browser.pause(browser.globals.wait_milliseconds_shortest);
 
         medication.waitForElementVisible('@filterButton', browser.globals.wait_milliseconds_shortest)
-            .getLocationInView('@filterButton', scrollPage)
+            .getLocationInView('@filterButton', scrollPage(browser))
             .click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds_short)
             .setValue('@filterInput', time)
             .section.table
             .waitForElementVisible('td[data-th="Name"]', browser.globals.wait_milliseconds_short)
-            .getLocationInView('td[data-th="Name"]', scrollPage)
+            .getLocationInView('td[data-th="Name"]', scrollPage(browser))
             .click('td[data-th="Name"]');
 
         var newName = 'Salbutamol 100micrograms ' + time;
@@ -77,7 +73,7 @@ module.exports = {
             .assert.containsText('@doseLabel', dose)
             .assert.containsText('@timingLabel', timing)
             .assert.containsText('@directionsLabel', directions)
-            .getLocationInView('@editButton', scrollPage)
+            .getLocationInView('@editButton', scrollPage(browser))
             .click('@editButton')
             .waitForElementPresent('@nameInput', browser.globals.wait_milliseconds_short)
             .clearValue('@nameInput')
@@ -86,7 +82,7 @@ module.exports = {
             .setValue('@doseInput', newDose)
             .clearValue('@doseDirectionsInput')
             .setValue('@doseDirectionsInput', newDirections)
-            .getLocationInView('@completeButton', scrollPage)
+            .getLocationInView('@completeButton', scrollPage(browser))
             .click('@completeButton');
         browser.pause(browser.globals.wait_milliseconds);
 

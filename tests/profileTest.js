@@ -4,6 +4,8 @@ module.exports = {
         browser.page.loginPage()
             .login();
 
+        browser.resizeWindow(1920, 1080);
+
         browser.page.patientSummaryPage()
             .handlePopUp();
 
