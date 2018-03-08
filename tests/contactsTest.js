@@ -12,8 +12,8 @@ module.exports = {
         var patientSummaryPage = browser.page.patientSummaryPage();
 
         const tab = "contacts";
-        const newNameFirstPart = 'Braun Smith';
-        const nameFirstPart = 'Evan Smith';
+        const newNameFirstPart = 'Braun';
+        const nameFirstPart = 'Evan';
 
         browser.globals.deleteTestItems(browser, tab, "name", nameFirstPart);
         browser.globals.deleteTestItems(browser, tab, "name", newNameFirstPart);
@@ -34,8 +34,7 @@ module.exports = {
 
         var createContactForm = patientSummaryPage.section.createContactForm;
 
-        var time = new Date().getTime();
-        const name = nameFirstPart + ' ' + time;
+        const name = nameFirstPart;
 
         createContactForm.waitForElementPresent('@nameInput', browser.globals.wait_milliseconds_short)
             .setValue('@nameInput', name)
@@ -65,13 +64,13 @@ module.exports = {
             .getLocationInView('@filterButton', scrollPage(browser))
             .click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds_short)
-            .setValue('@filterInput', time);
+            .setValue('@filterInput', name);
         browser.useXpath().waitForElementVisible('//td[.="' + name + '"]', browser.globals.wait_milliseconds_short)
             .click('//td[.="' + name + '"]');
 
         var newNote = 'works abroad 2 weeks';
         var newInfo = '012345 33452';
-        var newName = newNameFirstPart + ' ' + time;
+        var newName = newNameFirstPart;
         createContactForm.click('@expandButton')
             .waitForElementVisible('@nameLabel', browser.globals.wait_milliseconds_short)
             .assert.containsText('@nameLabel', name)

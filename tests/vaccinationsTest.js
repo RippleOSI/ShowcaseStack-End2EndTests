@@ -14,7 +14,7 @@ module.exports = {
 
         const tab = "vaccinations";
         const newNameFirstPart = 'antigen';
-        const nameFirstPart = 'Hepatitis A';
+        const nameFirstPart = 'Hepatitis_A';
 
         browser.globals.deleteTestItems(browser, tab, "vaccinationName", nameFirstPart);
         browser.globals.deleteTestItems(browser, tab, "vaccinationName", newNameFirstPart);
@@ -33,8 +33,7 @@ module.exports = {
 
         var createVaccinationForm = patientSummaryPage.section.createVaccinationForm;
 
-        var time = new Date().getTime();
-        const name = nameFirstPart+ ' ' + time;
+        const name = nameFirstPart;
         createVaccinationForm.waitForElementPresent('@nameInput', browser.globals.wait_milliseconds_short)
             .setValue('@nameInput', name)
             .getLocationInView('@calendar', scrollPage(browser))
@@ -61,14 +60,14 @@ module.exports = {
             .getLocationInView('@filterButton', scrollPage(browser))
             .click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds_short)
-            .setValue('@filterInput', time);
+            .setValue('@filterInput', name);
         browser.pause(browser.globals.wait_milliseconds_short)
             .useXpath()
             .waitForElementVisible('//td[.="' + name + '"]', browser.globals.wait_milliseconds_short)
             .click('//td[.="' + name + '"]');
 
-        const newName = newNameFirstPart+ ' ' + time;
-        const newComment = 'Immunisation incomplete';
+        const newName = newNameFirstPart;
+        const newComment = 'Immunisation_incomplete';
         const newSerial = '3';
         browser.pause(browser.globals.wait_milliseconds_short);
         browser.pause(browser.globals.wait_milliseconds_short);

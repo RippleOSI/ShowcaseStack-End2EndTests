@@ -18,35 +18,35 @@
     "path": "/api/patients/9999999000/",
     "tab": "allergies",
     "field": "cause",
-    "value": "allergy to Aspirin"
+    "value": "Hepatitis"
   },
   {
     "host": "dev.ripple.foundation",
     "path": "/api/patients/9999999000/",
     "tab": "contacts",
     "field": "name",
-    "value": "Evan Smith"
+    "value": "Evan"
   },
   {
     "host": "dev.ripple.foundation",
     "path": "/api/patients/9999999000/",
     "tab": "contacts",
     "field": "name",
-    "value": "Braun Smith"
+    "value": "Braun"
   },
   {
     "host": "dev.ripple.foundation",
     "path": "/api/patients/9999999000/",
     "tab": "personalnotes",
     "field": "noteType",
-    "value": "Patient enquiry"
+    "value": "Patient-enquiry"
   },
   {
     "host": "dev.ripple.foundation",
     "path": "/api/patients/9999999000/",
     "tab": "personalnotes",
     "field": "noteType",
-    "value": "Patient enquiry"
+    "value": "Patient-enquiry"
   },
   {
     "host": "dev.ripple.foundation",
@@ -67,7 +67,7 @@
     "path": "/api/patients/9999999000/",
     "tab": "vaccinations",
     "field": "vaccinationName",
-    "value": "Hepatitis A"
+    "value": "Hepatitis_A"
   }
 ]
 

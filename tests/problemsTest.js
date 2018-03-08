@@ -31,8 +31,7 @@ module.exports = {
 
         var createProblemForm = patientSummaryPage.section.createProblemForm;
 
-        var time = new Date().getTime();
-        const name = nameFirstPart + ' ' + time;
+        const name = nameFirstPart;
         createProblemForm.waitForElementPresent('@problemInput', browser.globals.wait_milliseconds_shortest)
             .setValue('@problemInput', name)
             .getLocationInView('@calendar', scrollPage(browser))
@@ -57,13 +56,13 @@ module.exports = {
             .getLocationInView('@filterButton', scrollPage(browser))
             .click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds_shortest)
-            .setValue('@filterInput', time);
+            .setValue('@filterInput', name);
         browser.pause(browser.globals.wait_milliseconds_shortest)
             .useXpath()
             .waitForElementVisible('//td[.="' + name + '"]', browser.globals.wait_milliseconds_shortest)
             .click('//td[.="' + name + '"]');
 
-        const chronic = " chronic";
+        const chronic = "_chronic";
         const newName = name + chronic;
         const newDescription = description + chronic;
         browser.pause(browser.globals.wait_milliseconds_shortest);

@@ -11,8 +11,6 @@ module.exports = {
 
         patientSummaryPage.handlePopUp();
 
-        browser.resizeWindow(3000, 3000);
-
         const tab = "medications";
         const nameFirstPart = 'Salbutamol';
         browser.globals.deleteTestItems(browser, tab, "name", nameFirstPart);
@@ -31,11 +29,10 @@ module.exports = {
 
         var createMedicationForm = patientSummaryPage.section.createMedicationForm;
 
-        var time = new Date().getTime();
-        var name = nameFirstPart + " " + time;
-        var dose = '2 puffs';
-        var timing = 'as required for wheeze';
-        var directions = 'Contact GP if using more than 4 times per day';
+        var name = nameFirstPart;
+        var dose = '2-puffs';
+        var timing = 'Required-for-wheeze';
+        var directions = 'Contact-GP-4';
         createMedicationForm.waitForElementPresent('@nameInput', browser.globals.wait_milliseconds_short)
             .setValue('@nameInput', name)
             .setValue('@doseInput', dose)
@@ -57,15 +54,15 @@ module.exports = {
             .getLocationInView('@filterButton', scrollPage(browser))
             .click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds_short)
-            .setValue('@filterInput', time)
+            .setValue('@filterInput', name)
             .section.table
             .waitForElementVisible('td[data-th="Name"]', browser.globals.wait_milliseconds_short)
             .getLocationInView('td[data-th="Name"]', scrollPage(browser))
             .click('td[data-th="Name"]');
 
-        var newName = 'Salbutamol 100micrograms ' + time;
+        var newName = 'Salbutamol-100micrograms';
         var newDose = '100micrograms';
-        var newDirections = 'Contact GP if using more than 3 times per day';
+        var newDirections = 'Contact-GP';
 
         createMedicationForm.waitForElementVisible('@title', browser.globals.wait_milliseconds_short)
             .waitForElementVisible('@nameLabel', browser.globals.wait_milliseconds_short)

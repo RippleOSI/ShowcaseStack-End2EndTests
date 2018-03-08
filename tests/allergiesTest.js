@@ -16,7 +16,7 @@ module.exports = {
 
         const tab = "allergies";
         const newCauseFirstPart = 'Antibiotics';
-        const causeFirstPart = 'allergy to Aspirin';
+        const causeFirstPart = 'Hepatitis';
 
         browser.globals.deleteTestItems(browser, tab, "cause", causeFirstPart);
         browser.globals.deleteTestItems(browser, tab, "cause", newCauseFirstPart);
@@ -32,8 +32,7 @@ module.exports = {
 
         var createAllergyForm = patientSummaryPage.section.createAllergyForm;
 
-        var time = new Date().getTime();
-        var cause = causeFirstPart + ' ' + time;
+        var cause = causeFirstPart;
         var reaction = 'Fever';
         createAllergyForm.waitForElementPresent('@causeInput', browser.globals.wait_milliseconds_short)
             .setValue('@causeInput', cause)
@@ -50,7 +49,7 @@ module.exports = {
             .getLocationInView('@filterButton', scrollPage(browser))
             .click('@filterButton')
             .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds_shortest)
-            .setValue('@filterInput', time)
+            .setValue('@filterInput', causeFirstPart)
             .section.table
             .waitForElementVisible('td[data-th="Cause"]', browser.globals.wait_milliseconds_shortest)
             .getLocationInView('td[data-th="Cause"]', scrollPage(browser))
@@ -62,7 +61,7 @@ module.exports = {
             .assert.containsText('@causeLabel', cause)
             .assert.containsText('@reactionLabel', reaction);
 
-        var newCause = newCauseFirstPart + ' ' + time;
+        var newCause = newCauseFirstPart;
         var newReaction = 'Skin rash';
         createAllergyForm.click('@expandButton')
             .waitForElementVisible('@editButton', browser.globals.wait_milliseconds_short)
