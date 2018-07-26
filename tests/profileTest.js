@@ -19,9 +19,10 @@ module.exports = {
 
 
         userDetailsPopUp.waitForElementVisible('@avatar', browser.globals.wait_milliseconds)
-            .assert.containsText('@name', 'Alen Mekka')
+            // .assert.containsText('@name', 'Alen Mekka')
+            .assert.containsText('@name', 'Ivor Cox')
             .assert.containsText('@userType', 'PHR')
-            .assert.containsText('@email', 'aschenputtel123912@gmail.com')
+            // .assert.containsText('@email', 'aschenputtel123912@gmail.com')
             .assert.containsText('@birthday', '10/05/2099')
             // .assert.containsText('@info', 'About Showcase Stack; PulseTile version 1.0.0/QEWD_Ripple version 1.0.0')
             .click('@avatar');
