@@ -48,9 +48,24 @@
       "launch_url" : "https://secureshowcase.ripple.foundation/",
       "globals" : {
         "settings" : {
+          "version" : "showcase",
           "loginInput": "Alen",
           "passwordInput": "070790",
-          "loginButton": "button.auth0-lock-submit"
+          "loginButton": "button.auth0-lock-submit",
+          "testsNotChecked" : [],
+          "menuItems" : ["@problems", "@contacts", "@medications", "@allergies", "@clinicalNotes", "@personalNotes", "@vaccinations"],
+          "userInfo" : {
+            "firstname" : "Alen",
+            "lastname" : "Mekka"
+          },
+          "patientSummaryMain" : "@patientSummary",
+          "userProfile" : {
+            "name" : "Alen Mekka",
+            "userType" : "PHR",
+            "email" : "aschenputtel123912@gmail.com",
+            "birthday" : "10/05/2099",
+            "info" : "About Showcase Stack; PulseTile version 1.0.0/QEWD_Ripple version 2.32.1"
+          }
         }
       }
     },
@@ -63,9 +78,24 @@
         "version_switch_init_path": "/api/initialise",
         "version_switch_path": "/api/ui/angular",
         "settings" : {
+          "version" : "dev_ang",
           "loginInput": "Alen",
           "passwordInput": "070790",
-          "loginButton": "button.auth0-lock-submit"
+          "loginButton": "button.auth0-lock-submit",
+          "testsNotChecked" : [],
+          "menuItems" : ["@problems", "@contacts", "@medications", "@allergies", "@clinicalNotes", "@personalNotes", "@vaccinations"],
+          "userInfo" : {
+            "firstname" : "Alen",
+            "lastname" : "Mekka"
+          },
+          "patientSummaryMain" : "@patientSummary",
+          "userProfile" : {
+            "name" : "Alen Mekka",
+            "userType" : "PHR",
+            "email" : "aschenputtel123912@gmail.com",
+            "birthday" : "10/05/2099",
+            "info" : "About Showcase Stack; PulseTile version 1.0.1/QEWD_Ripple version 2.32.1"
+          }
         }
       }
     },
@@ -78,9 +108,24 @@
         "version_switch_init_path": "/api/initialise",
         "version_switch_path": "/api/ui/react",
         "settings" : {
+          "version" : "dev_react",
           "loginInput": "Alen",
           "passwordInput": "070790",
-          "loginButton": "button.auth0-lock-submit"
+          "loginButton": "button.auth0-lock-submit",
+          "testsNotChecked" : [],
+          "menuItems" : ["@problems", "@contacts", "@medications", "@allergies", "@clinicalNotes", "@personalNotes", "@vaccinations"],
+          "userInfo" : {
+            "firstname" : "Alen",
+            "lastname" : "Mekka"
+          },
+          "patientSummaryMain" : "@patientSummary",
+          "userProfile" : {
+            "name" : "Alen Mekka",
+            "userType" : "PHR",
+            "email" : "aschenputtel123912@gmail.com",
+            "birthday" : "10/05/2099",
+            "info" : "About Showcase Stack; PulseTile version 1.0.0/QEWD_Ripple version 2.32.1"
+          }
         }
       }
     },
@@ -93,12 +138,26 @@
         "version_switch_init_path": "/api/initialise",
         "version_switch_path": "/api/ui/react",
         "settings" : {
+          "version" : "helm",
           "loginInput": "ivor.cox@ripple.foundation",
           "passwordInput": "IvorCox1!",
-          "loginButton": "input[name^='login']"
+          "loginButton" : "input[name^='login']",
+          "testsNotChecked" : ["personalNotesTest"],
+          "menuItems" : ["@contacts", "@medications", "@allergies", "@vaccinations", "@diagnosis", "@topThreeThings"],
+          "userInfo" : {
+            "firstname" : "Ivor",
+            "lastname" : "Cox"
+          },
+          "patientSummaryMain" : "@home",
+          "userProfile" : {
+            "name" : "Ivor Cox",
+            "userType" : "PHR",
+            "email" : "",
+            "birthday" : "10/05/2099",
+            "info" : "About Showcase Stack; PulseTile version 1.0.0/QEWD_Ripple version 15.6.2"
+          }
         }
       }
     }
-
   }
 }

@@ -20,8 +20,11 @@ module.exports = {
         browser.pause(browser.globals.wait_milliseconds_shortest);
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
 
-        leftBarMenu.waitForElementVisible('@problems', browser.globals.wait_milliseconds_shortest)
-            .click('@problems');
+        if(browser.globals.settings.version === 'helm') {
+            leftBarMenu.waitForElementVisible('@diagnosis', browser.globals.wait_milliseconds_shortest).click('@diagnosis');
+        } else {
+            leftBarMenu.waitForElementVisible('@problems', browser.globals.wait_milliseconds_shortest).click('@problems');
+        }
 
         var problems = patientSummaryPage.section.problems;
         browser.pause(browser.globals.wait_milliseconds_shortest);

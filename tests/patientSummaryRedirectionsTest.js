@@ -17,37 +17,46 @@ module.exports = {
         patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
 
         contactsBoardSection = patientSummarySection.section.contactsBoard;
-        problemsBoardSection = patientSummarySection.section.problemsBoard;
         allergiesBoardSection = patientSummarySection.section.allergiesBoard;
         medicationsBoardSection = patientSummarySection.section.medicationsBoard;
 
         allergiesSection = patientSummaryPage.section.allergies;
         contactsSection = patientSummaryPage.section.contacts;
         medicationsSection = patientSummaryPage.section.medications;
+
+        problemsBoardSection = patientSummarySection.section.problemsBoard;
         problemsSection = patientSummaryPage.section.problems;
+        if (browser.globals.settings.version === 'helm') {
+            problemsBoardSection = patientSummarySection.section.diagnosisBoard;
+            problemsSection = patientSummaryPage.section.diagnosis;
+        }
+
+        var patientSummaryMain = browser.globals.settings.patientSummaryMain;
 
         contactsBoardSection.click('@redirectButton');
 
         contactsSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
             .assert.containsText('@title', 'Contacts');
 
-        leftBarMenu.click('@patientSummary');
+        leftBarMenu.click(patientSummaryMain);
         patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
 
         allergiesBoardSection.click('@redirectButton');
 
         allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
-            .assert.containsText('@title', 'Allergies');
+                .assert.containsText('@title', 'Allergies');
 
-        leftBarMenu.click('@patientSummary');
+        leftBarMenu.click(patientSummaryMain);
         patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
 
         problemsBoardSection.click('@redirectButton');
 
-        allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
-            .assert.containsText('@title', 'Problems / Diagnoses');
+        var problemsTitle = (browser.globals.settings.version === 'helm') ? 'Diagnoses' : 'Problems / Diagnoses';
 
-        leftBarMenu.click('@patientSummary');
+        allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
+            .assert.containsText('@title', problemsTitle);
+
+        leftBarMenu.click(patientSummaryMain);
         patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
 
         medicationsBoardSection.click('@redirectButton');
@@ -55,7 +64,7 @@ module.exports = {
         allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
             .assert.containsText('@title', 'All Medications');
 
-        leftBarMenu.click('@patientSummary');
+        leftBarMenu.click(patientSummaryMain);
         patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
 
         browser.end();

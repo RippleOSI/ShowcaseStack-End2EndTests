@@ -16,9 +16,10 @@ module.exports = {
         browser.pause(browser.globals.wait_milliseconds_short);
 
         contactsSection = patientSummarySection.section.contactsBoard;
-        problemsSection = patientSummarySection.section.problemsBoard;
         allergiesSection = patientSummarySection.section.allergiesBoard;
         medicationsSection = patientSummarySection.section.medicationsBoard;
+
+        problemsSection = (browser.globals.settings.version === 'helm') ? patientSummarySection.section.diagnosisBoard : patientSummarySection.section.problemsBoard;
 
         contactsSection.assert.visible('@header');
         problemsSection.assert.visible('@header');
