@@ -1,5 +1,6 @@
-# PulseTiles-Tests
-repo for PulseTile End to End tests
+# RippleOSI-End2EndTests
+repo for End to End tests for RippleOSI stack 
+(history: derived from PulseTile test work)
 
 # Instruction
 For Windows
