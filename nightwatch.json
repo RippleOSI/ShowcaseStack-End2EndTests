@@ -8,11 +8,11 @@
 
   "selenium" : {
     "start_process" : true,
-    "server_path" : "/usr/local/bin/selenium-server-standalone.jar",
+    "server_path" : "D:\\Source\\selenium-server-standalone-3.8.0.jar",
     "log_path" : "",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.chrome.driver" : "/usr/local/bin/chromedriver1",
+      "webdriver.chrome.driver" : "D:\\Source\\chromedriver.exe",
       "webdriver.gecko.driver" : "",
       "webdriver.edge.driver" : ""
     }
@@ -28,7 +28,7 @@
         "enabled" : true,
         "on_failure" : true,
         "on_error" : true,
-        "path" : "reports/screenshots"
+        "path" : "reports\\screenshots"
       },
       "desiredCapabilities": {
         "browserName": "chrome",
