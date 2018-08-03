@@ -1,15 +1,14 @@
 module.exports = {
     'User login (Patient banner)': function (browser) {
         browser.url(browser.launchUrl);
-
         var loginPage = browser.page.loginPage();
         loginPage.waitForElementVisible('@loginInput', browser.globals.wait_milliseconds)
             .assert.visible('@passwordInput')
-            .assert.visible('@loginButton')
-            .setValue('@loginInput', 'Alen')
-            .setValue('@passwordInput', '070790')
-            .click('@loginButton')
-            .waitForElementNotPresent('@loginButton', browser.globals.wait_milliseconds);
+            .assert.visible(browser.globals.settings.loginButton)
+            .setValue('@loginInput', browser.globals.settings.loginInput)
+            .setValue('@passwordInput', browser.globals.settings.passwordInput)
+            .click(browser.globals.settings.loginButton)
+            .waitForElementNotPresent(browser.globals.settings.loginButton, browser.globals.wait_milliseconds);
 
         var patientSummaryPage = browser.page.patientSummaryPage();
 

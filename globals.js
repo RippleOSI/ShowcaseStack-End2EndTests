@@ -11,7 +11,7 @@ function printStatus(response) {
     console.log("Got response for deleting stuff: " + response.statusCode);
 }
 
-function sendDeleteCall (host, path, tab) {
+function sendDeleteCall (host, port, path, tab) {
     var http = require('http');
 
     function initCallBack(response) {
@@ -24,6 +24,7 @@ function sendDeleteCall (host, path, tab) {
 
             var options = {
                 host: host,
+                port: port,
                 path: path + tab,
                 headers: {
                     Authorization: token
@@ -42,10 +43,16 @@ function sendDeleteCall (host, path, tab) {
 
     var options = {
         host: host,
+        port: port,
         path: "/api/initialise"
     };
 
     http.get(options, initCallBack);
+}
+
+function getCurrentPort(url) {
+    var urlArray = url.split(':');
+    return urlArray[1] ? urlArray[1] : '80';
 }
 
 module.exports = {
@@ -78,6 +85,7 @@ module.exports = {
                     console.log("Auth token: " + token);
                     var options = {
                         host: browser.globals.version_switch_host,
+                        port: browser.globals.version_switch_port,
                         path: browser.globals.version_switch_path,
                         headers: {
                             Authorization: token
@@ -89,6 +97,7 @@ module.exports = {
 
             var options = {
                 host: browser.globals.version_switch_host,
+                port: browser.globals.version_switch_port,
                 path: browser.globals.version_switch_init_path
             };
 
@@ -112,31 +121,39 @@ module.exports = {
 
             var partsOfUrl = result.value.split("/");
 
-            var host = String(partsOfUrl[2]).replace("secure", "");
+            var hostAndPort = String(partsOfUrl[2]).replace("secure", "");
+            var port = getCurrentPort(hostAndPort);
+            var host = hostAndPort.replace(String(port), "").replace(":", "");
+
             console.log("host: " + host);
+            console.log("port: " + port);
 
             var deletePath = tab + "/" + String(String(partsOfUrl[partsOfUrl.length - 1]).split("?")[0]);
             console.log("path :" + deletePath);
 
-            sendDeleteCall(host, testPatientPath, deletePath);
+            sendDeleteCall(host, port, testPatientPath, deletePath);
         });
     },
 
     deleteTestItems: function (browser, tab, nameField, nameValue) {
         browser.url(function (result) {
             // return the current url
-            console.log(result.value);
+            console.log('CurrentURL: ' + result.value);
 
             var partsOfUrl = result.value.split("/");
 
-            var host = String(partsOfUrl[2]).replace("secure", "");
-            console.log("host: " + host);
+            var hostAndPort = String(partsOfUrl[2]).replace("secure", "");
+            var port = getCurrentPort(hostAndPort);
+            var host = hostAndPort.replace(String(port), "").replace(":", "");
 
-            browser.globals.deleteAllMatchingName(host, testPatientPath, tab, nameField, nameValue);
+            console.log("host: " + host);
+            console.log("port: " + port);
+
+            browser.globals.deleteAllMatchingName(host, port, testPatientPath, tab, nameField, nameValue);
         });
     },
 
-    deleteAllMatchingName: function (host, path, tab, nameField, nameValue) {
+    deleteAllMatchingName: function (host, port, path, tab, nameField, nameValue) {
         var http = require('http');
 
         function parseItemsList(response) {
@@ -154,7 +171,7 @@ module.exports = {
                     // console.log(itemName);
                     if (String(itemName).indexOf(nameValue) === 0) {
                         console.log("Deleting " + tab + " " + itemName);
-                        sendDeleteCall(host, path, tab + "/" + items[index].sourceId);
+                        sendDeleteCall(host, port, path, tab + "/" + items[index].sourceId);
                     }
                 }
             });
@@ -187,6 +204,7 @@ module.exports = {
 
         var options = {
             host: host,
+            port: port,
             path: "/api/initialise"
         };
 

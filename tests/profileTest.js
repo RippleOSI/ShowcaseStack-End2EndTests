@@ -1,6 +1,5 @@
 module.exports = {
     'User Profile drop-down': function (browser) {
-
         browser.page.loginPage()
             .login();
 
@@ -10,20 +9,19 @@ module.exports = {
             .handlePopUp();
 
         browser.pause(browser.globals.wait_milliseconds_shortest);
-        var topBar = browser.page.topBar();
 
+        var topBar = (browser.globals.settings.version === 'showcase') ? browser.page.topBarShowcase() : browser.page.topBar();
         topBar.waitForElementVisible('@userButton', browser.globals.wait_milliseconds)
             .click('@userButton');
 
         var userDetailsPopUp = topBar.section.userInfo;
-
+        var userProfileInfo = browser.globals.settings.userProfile;
 
         userDetailsPopUp.waitForElementVisible('@avatar', browser.globals.wait_milliseconds)
-            .assert.containsText('@name', 'Alen Mekka')
-            .assert.containsText('@userType', 'PHR')
-            .assert.containsText('@email', 'aschenputtel123912@gmail.com')
-            .assert.containsText('@birthday', '10/05/2099')
-            // .assert.containsText('@info', 'About Showcase Stack; PulseTile version 1.0.0/QEWD_Ripple version 1.0.0')
+            .assert.containsText('@name', userProfileInfo.name)
+            .assert.containsText('@userType', userProfileInfo.userType)
+            .assert.containsText('@email', userProfileInfo.email)
+            .assert.containsText('@birthday', userProfileInfo.birthday)
             .click('@avatar');
 
         var userProfilePage = browser.page.patientInformationPage();

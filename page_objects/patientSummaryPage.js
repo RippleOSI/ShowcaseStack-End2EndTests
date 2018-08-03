@@ -86,6 +86,14 @@ module.exports = {
                         redirectButton: ".btn-board-more"
                     }
                 },
+                diagnosisBoard: {
+                    selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Diagnosis')]",
+                    locateStrategy: 'xpath',
+                    elements: {
+                        header: "h3",
+                        redirectButton: ".btn-board-more"
+                    }
+                },
                 contactsBoard: {
                     selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Contacts')]",
                     locateStrategy: 'xpath',
@@ -414,8 +422,16 @@ module.exports = {
                     selector: "li/a[.='Patient Summary']",
                     locateStrategy: 'xpath'
                 },
+                home: {
+                    selector: "li/a[.='Home']",
+                    locateStrategy: 'xpath'
+                },
                 problems: {
                     selector: "li/a[.='Problems / Diagnosis']",
+                    locateStrategy: 'xpath'
+                },
+                diagnosis: {
+                    selector: "li/a[.='Diagnosis']",
                     locateStrategy: 'xpath'
                 },
                 medications: {
@@ -464,6 +480,10 @@ module.exports = {
                 },
                 orders: {
                     selector: "li/a[.='Orders']",
+                    locateStrategy: 'xpath'
+                },
+                topThreeThings: {
+                    selector: "li/a[.='Top 3 Things']",
                     locateStrategy: 'xpath'
                 }
             }
