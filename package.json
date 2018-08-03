@@ -2,8 +2,7 @@
   "name": "PulseTile-Tests",
   "version": "0.0.1",
   "dependencies": {
-    "chromedriver": "^2.38.3",
-    "dateformat": "~3.0.2",
-    "nightwatch-html-reporter": "^2.0.5"
+    "nightwatch-html-reporter": "~2.0.4",
+    "dateformat": "~3.0.2"
   }
 }
