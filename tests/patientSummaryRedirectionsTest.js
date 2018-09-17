@@ -1,3 +1,5 @@
+const isTestChecked = require('../utils/isTestChecked.js');
+
 module.exports = {
     'Patient Summary Redirections': function (browser) {
         browser.page.loginPage()
@@ -6,6 +8,9 @@ module.exports = {
         browser.resizeWindow(1920, 1080);
 
         var patientSummaryPage = browser.page.patientSummaryPage();
+
+        var problemsTitle = (browser.globals.settings.version === 'helm') ? 'Problems / Issues' : 'Problems / Diagnoses';
+        var medicationsTitle = (browser.globals.settings.version === 'helm') ? 'Medications' : 'All Medications';
 
         patientSummaryPage.handlePopUp();
         browser.pause(browser.globals.wait_milliseconds_shortest);
@@ -33,36 +38,32 @@ module.exports = {
 
         var patientSummaryMain = browser.globals.settings.patientSummaryMain;
 
-        contactsBoardSection.click('@redirectButton');
-
-        contactsSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
-            .assert.containsText('@title', 'Contacts');
+        if (false === isTestChecked(browser, "contacts")) {
+            contactsBoardSection.click('@redirectButton');
+            contactsSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
+                .assert.containsText('@title', 'Contacts');
+        }
 
         leftBarMenu.click(patientSummaryMain);
         patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
 
         allergiesBoardSection.click('@redirectButton');
-
         allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
                 .assert.containsText('@title', 'Allergies');
 
         leftBarMenu.click(patientSummaryMain);
         patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
-
         problemsBoardSection.click('@redirectButton');
-
-        var problemsTitle = (browser.globals.settings.version === 'helm') ? 'Diagnoses' : 'Problems / Diagnoses';
 
         allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
             .assert.containsText('@title', problemsTitle);
 
         leftBarMenu.click(patientSummaryMain);
         patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
-
         medicationsBoardSection.click('@redirectButton');
 
         allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
-            .assert.containsText('@title', 'All Medications');
+            .assert.containsText('@title', medicationsTitle);
 
         leftBarMenu.click(patientSummaryMain);
         patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);

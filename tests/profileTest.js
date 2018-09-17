@@ -17,16 +17,19 @@ module.exports = {
         var userDetailsPopUp = topBar.section.userInfo;
         var userProfileInfo = browser.globals.settings.userProfile;
 
-        userDetailsPopUp.waitForElementVisible('@avatar', browser.globals.wait_milliseconds)
+        userDetailsPopUp
             .assert.containsText('@name', userProfileInfo.name)
             .assert.containsText('@userType', userProfileInfo.userType)
             .assert.containsText('@email', userProfileInfo.email)
-            .assert.containsText('@birthday', userProfileInfo.birthday)
-            .click('@avatar');
+            .assert.containsText('@birthday', userProfileInfo.birthday);
 
-        var userProfilePage = browser.page.patientInformationPage();
-
-        userProfilePage.waitForElementVisible('@header', browser.globals.wait_milliseconds);
+        if (userProfileInfo.avatar) {
+            userDetailsPopUp
+                .waitForElementVisible('@avatar', browser.globals.wait_milliseconds)
+                .click('@avatar');
+            var userProfilePage = browser.page.patientInformationPage();
+            userProfilePage.waitForElementVisible('@header', browser.globals.wait_milliseconds);
+        }
 
         browser.end();
     }

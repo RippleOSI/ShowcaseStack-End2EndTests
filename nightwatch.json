@@ -54,12 +54,15 @@
           "loginButton": "button.auth0-lock-submit",
           "testsNotChecked" : [],
           "menuItems" : ["@problems", "@contacts", "@medications", "@allergies", "@clinicalNotes", "@personalNotes", "@vaccinations"],
+          "creationDenied" : [],
+          "editingDenied" : [],
           "userInfo" : {
             "firstname" : "Alen",
             "lastname" : "Mekka"
           },
           "patientSummaryMain" : "@patientSummary",
           "userProfile" : {
+            "avatar" : true,
             "name" : "Alen Mekka",
             "userType" : "PHR",
             "email" : "aschenputtel123912@gmail.com",
@@ -84,12 +87,15 @@
           "loginButton": "button.auth0-lock-submit",
           "testsNotChecked" : [],
           "menuItems" : ["@problems", "@contacts", "@medications", "@allergies", "@clinicalNotes", "@personalNotes", "@vaccinations"],
+          "creationDenied" : [],
+          "editingDenied" : [],
           "userInfo" : {
             "firstname" : "Alen",
             "lastname" : "Mekka"
           },
           "patientSummaryMain" : "@patientSummary",
           "userProfile" : {
+            "avatar" : true,
             "name" : "Alen Mekka",
             "userType" : "PHR",
             "email" : "aschenputtel123912@gmail.com",
@@ -114,12 +120,15 @@
           "loginButton": "button.auth0-lock-submit",
           "testsNotChecked" : [],
           "menuItems" : ["@problems", "@contacts", "@medications", "@allergies", "@clinicalNotes", "@personalNotes", "@vaccinations"],
+          "creationDenied" : [],
+          "editingDenied" : [],
           "userInfo" : {
             "firstname" : "Alen",
             "lastname" : "Mekka"
           },
           "patientSummaryMain" : "@patientSummary",
           "userProfile" : {
+            "avatar" : true,
             "name" : "Alen Mekka",
             "userType" : "PHR",
             "email" : "aschenputtel123912@gmail.com",
@@ -131,7 +140,7 @@
     },
 
     "helm" : {
-      "launch_url" : "https://keycloak.dev1.signin.nhs.uk/cicauth/realms/NHS/protocol/openid-connect/auth?redirect_uri=http%3A%2F%2Fdev.ripple.foundation%3A8000%2Fapi%2Fauth%2Ftoken&scope=openid&client_id=leeds-helm&response_type=code",
+      "launch_url" : "http://dev.ripple.foundation:8000",
       "globals" : {
         "version_switch_host": "dev.ripple.foundation",
         "version_switch_port": "8000",
@@ -142,14 +151,17 @@
           "loginInput": "ivor.cox@ripple.foundation",
           "passwordInput": "IvorCox1!",
           "loginButton" : "input[name^='login']",
-          "testsNotChecked" : ["personalNotesTest"],
-          "menuItems" : ["@contacts", "@medications", "@allergies", "@vaccinations", "@diagnosis", "@topThreeThings"],
+          "testsNotChecked" : ["personalNotesTest", "contacts"],
+          "menuItems" : ["@medications", "@allergies", "@vaccinations", "@diagnosis", "@topThreeThings"],
+          "creationDenied" : ["allergies", "diagnosis", "medications", "vaccinations"],
+          "editingDenied" : ["allergies", "diagnosis", "medications", "vaccinations"],
           "userInfo" : {
             "firstname" : "Ivor",
             "lastname" : "Cox"
           },
           "patientSummaryMain" : "@home",
           "userProfile" : {
+            "avatar" : false,
             "name" : "Ivor Cox",
             "userType" : "PHR",
             "email" : "",
