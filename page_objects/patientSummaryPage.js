@@ -87,7 +87,7 @@ module.exports = {
                     }
                 },
                 diagnosisBoard: {
-                    selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Diagnosis')]",
+                    selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Problems / Issues')]",
                     locateStrategy: 'xpath',
                     elements: {
                         header: "h3",
@@ -431,7 +431,7 @@ module.exports = {
                     locateStrategy: 'xpath'
                 },
                 diagnosis: {
-                    selector: "li/a[.='Diagnosis']",
+                    selector: "li/a[.='Problems / Issues']",
                     locateStrategy: 'xpath'
                 },
                 medications: {

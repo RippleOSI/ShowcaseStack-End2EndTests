@@ -17,7 +17,6 @@ module.exports = {
         var arrayLength = menuItems.length;
         for (var index = 0; index < arrayLength; index++) {
             var menuItem = menuItems[index];
-            console.log(menuItem);
             leftBarMenu.waitForElementVisible(menuItem, browser.globals.wait_milliseconds)
                 .click(menuItem);
 

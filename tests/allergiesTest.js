@@ -1,4 +1,6 @@
 const scrollPage = require('../utils/scrollPage.js');
+const isCreationPossible = require('../utils/isCreationPossible.js');
+const isEditingPossible = require('../utils/isEditingPossible.js');
 
 module.exports = {
     'Patient Headings Allergies': function (browser) {
@@ -24,65 +26,71 @@ module.exports = {
         leftBarMenu.waitForElementVisible('@allergies', browser.globals.wait_milliseconds_short)
             .click('@allergies');
 
-        allergies = patientSummaryPage.section.allergies;
-        browser.pause(browser.globals.wait_milliseconds_shortest);
-        allergies.waitForElementVisible('@createButton', browser.globals.wait_milliseconds_shortest)
-            .getLocationInView('@createButton', scrollPage(browser))
-            .click('@createButton');
+        if (isCreationPossible(browser, 'allergies')) {
 
-        var createAllergyForm = patientSummaryPage.section.createAllergyForm;
+            allergies = patientSummaryPage.section.allergies;
+            browser.pause(browser.globals.wait_milliseconds_shortest);
+            allergies.waitForElementVisible('@createButton', browser.globals.wait_milliseconds_shortest)
+                .getLocationInView('@createButton', scrollPage(browser))
+                .click('@createButton');
 
-        var cause = causeFirstPart;
-        var reaction = 'fever';
-        createAllergyForm.waitForElementPresent('@causeInput', browser.globals.wait_milliseconds_short)
-            .setValue('@causeInput', cause)
-            .setValue('@reactionInput', reaction)
-            .getLocationInView('@completeButton', scrollPage(browser))
-            .click('@completeButton')
-            .waitForElementNotPresent('@causeInput', browser.globals.wait_milliseconds_short);
+            var createAllergyForm = patientSummaryPage.section.createAllergyForm;
 
-        browser.pause(browser.globals.wait_milliseconds_short);
-        browser.refresh();
-        browser.pause(browser.globals.wait_milliseconds_shortest);
+            var cause = causeFirstPart;
+            var reaction = 'fever';
+            createAllergyForm.waitForElementPresent('@causeInput', browser.globals.wait_milliseconds_short)
+                .setValue('@causeInput', cause)
+                .setValue('@reactionInput', reaction)
+                .getLocationInView('@completeButton', scrollPage(browser))
+                .click('@completeButton')
+                .waitForElementNotPresent('@causeInput', browser.globals.wait_milliseconds_short);
 
-        allergies.waitForElementVisible('@filterButton', browser.globals.wait_milliseconds_shortest)
-            .getLocationInView('@filterButton', scrollPage(browser))
-            .click('@filterButton')
-            .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds_shortest)
-            .setValue('@filterInput', causeFirstPart)
-            .section.table
-            .waitForElementVisible('td[data-th="Cause"]', browser.globals.wait_milliseconds_shortest)
-            .getLocationInView('td[data-th="Cause"]', scrollPage(browser))
-            .click('td[data-th="Cause"]');
+            browser.pause(browser.globals.wait_milliseconds_short);
+            browser.refresh();
+            browser.pause(browser.globals.wait_milliseconds_shortest);
 
-        browser.pause(browser.globals.wait_milliseconds_shortest);
+            allergies.waitForElementVisible('@filterButton', browser.globals.wait_milliseconds_shortest)
+                .getLocationInView('@filterButton', scrollPage(browser))
+                .click('@filterButton')
+                .waitForElementVisible('@filterInput', browser.globals.wait_milliseconds_shortest)
+                .setValue('@filterInput', causeFirstPart)
+                .section.table
+                .waitForElementVisible('td[data-th="Cause"]', browser.globals.wait_milliseconds_shortest)
+                .getLocationInView('td[data-th="Cause"]', scrollPage(browser))
+                .click('td[data-th="Cause"]');
 
-        createAllergyForm.waitForElementVisible('@causeLabel', browser.globals.wait_milliseconds_short)
-            .assert.containsText('@causeLabel', cause)
-            .assert.containsText('@reactionLabel', reaction);
+            browser.pause(browser.globals.wait_milliseconds_shortest);
 
-        var newCause = newCauseFirstPart;
-        var newReaction = 'skin_rash';
-        createAllergyForm.click('@expandButton')
-            .waitForElementVisible('@editButton', browser.globals.wait_milliseconds_short)
-            .getLocationInView('@editButton', scrollPage(browser))
-            .click('@editButton')
-            .waitForElementPresent('@causeInput', browser.globals.wait_milliseconds_short)
-            .clearValue('@causeInput')
-            .setValue('@causeInput', newCause)
-            .clearValue('@reactionInput')
-            .setValue('@reactionInput', newReaction)
-            .getLocationInView('@completeButton', scrollPage(browser))
-            .click('@completeButton');
+            createAllergyForm.waitForElementVisible('@causeLabel', browser.globals.wait_milliseconds_short)
+                .assert.containsText('@causeLabel', cause)
+                .assert.containsText('@reactionLabel', reaction);
 
-        browser.pause(browser.globals.wait_milliseconds_short);
+            var newCause = newCauseFirstPart;
+            var newReaction = 'skin_rash';
 
-        createAllergyForm.waitForElementNotPresent('@causeInput', browser.globals.wait_milliseconds_short)
-            .waitForElementVisible('@causeLabel', browser.globals.wait_milliseconds_short)
-            .assert.containsText('@causeLabel', newCause)
-            .assert.containsText('@reactionLabel', newReaction);
+            if (isEditingPossible(browser, 'allergies')) {
+                createAllergyForm.click('@expandButton')
+                    .waitForElementVisible('@editButton', browser.globals.wait_milliseconds_short)
+                    .getLocationInView('@editButton', scrollPage(browser))
+                    .click('@editButton')
+                    .waitForElementPresent('@causeInput', browser.globals.wait_milliseconds_short)
+                    .clearValue('@causeInput')
+                    .setValue('@causeInput', newCause)
+                    .clearValue('@reactionInput')
+                    .setValue('@reactionInput', newReaction)
+                    .getLocationInView('@completeButton', scrollPage(browser))
+                    .click('@completeButton');
 
-        browser.globals.deleteCurrentItem(browser, tab);
+                browser.pause(browser.globals.wait_milliseconds_short);
+
+                createAllergyForm.waitForElementNotPresent('@causeInput', browser.globals.wait_milliseconds_short)
+                    .waitForElementVisible('@causeLabel', browser.globals.wait_milliseconds_short)
+                    .assert.containsText('@causeLabel', newCause)
+                    .assert.containsText('@reactionLabel', newReaction);
+            }
+
+            browser.globals.deleteCurrentItem(browser, tab);
+        }
 
         browser.end();
     }
