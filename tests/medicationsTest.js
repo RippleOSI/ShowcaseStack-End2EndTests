@@ -68,7 +68,7 @@ module.exports = {
             var newDose = '100micrograms';
             var newDirections = 'contact_gp';
 
-            if (isEditingPossible(brewser, 'medications')) {
+            if (isEditingPossible(browser, 'medications')) {
                 createMedicationForm.waitForElementVisible('@title', browser.globals.wait_milliseconds_short)
                     .waitForElementVisible('@nameLabel', browser.globals.wait_milliseconds_short)
                     .assert.containsText('@nameLabel', name)
