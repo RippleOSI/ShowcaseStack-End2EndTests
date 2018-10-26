@@ -19,9 +19,10 @@ module.exports = {
 
         userDetailsPopUp
             .assert.containsText('@name', userProfileInfo.name)
-            .assert.containsText('@userType', userProfileInfo.userType)
-            .assert.containsText('@email', userProfileInfo.email)
-            .assert.containsText('@birthday', userProfileInfo.birthday);
+            .assert.containsText('@userType', userProfileInfo.userType);
+
+        userProfileInfo.email ? userDetailsPopUp.assert.containsText('@email', userProfileInfo.email) : null;
+        userProfileInfo.birthday ? userDetailsPopUp.assert.containsText('@birthday', userProfileInfo.birthday) : null;
 
         if (userProfileInfo.avatar) {
             userDetailsPopUp
