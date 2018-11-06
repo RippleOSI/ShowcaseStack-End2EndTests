@@ -151,7 +151,7 @@
           "loginInput": "ivor.cox@ripple.foundation",
           "passwordInput": "IvorCox1!",
           "loginButton" : "input[name^='login']",
-          "testsNotChecked" : ["personalNotesTest", "contacts"],
+          "testsNotChecked" : ["personalNotesTest", "contacts", "patientAccordionTest", "patientInformationTest"],
           "menuItems" : ["@medications", "@allergies", "@vaccinations", "@diagnosis", "@topThreeThings"],
           "creationDenied" : ["allergies", "diagnosis", "medications", "vaccinations"],
           "editingDenied" : ["allergies", "diagnosis", "medications", "vaccinations"],
