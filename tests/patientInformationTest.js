@@ -10,7 +10,7 @@ module.exports = {
         patientInformationPage.navigate();
 
         browser.pause(browser.globals.wait_milliseconds_shortest);
-        patientInformationPage.section.preferences.waitForElementVisible('@title', browser.globals.wait_milliseconds)
+        patientInformationPage.section.preferences.waitForElementPresent('@title', browser.globals.wait_milliseconds)
             .assert.containsText('@title', 'Application Preferences');
         patientInformationPage.section.personalInfo.assert.containsText('@title', 'Personal Information');
         patientInformationPage.section.contacts.assert.containsText('@title', 'Contact Information');
