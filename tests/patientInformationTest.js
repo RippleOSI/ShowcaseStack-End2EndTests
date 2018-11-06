@@ -1,21 +1,24 @@
+const isTestChecked = require('../utils/isTestChecked.js');
+
 module.exports = {
-    'Patient Information page': function (browser) {
-        browser.page.loginPage()
-            .login();
+  'Patient Information page': function (browser) {
+    if (isTestChecked(browser, "patientInformationTest")) {
+      browser.end();
+    } else {
+      browser.page.loginPage().login();
+      browser.resizeWindow(1920, 1080);
 
-        browser.resizeWindow(1920, 1080);
+      var patientInformationPage = browser.page.patientInformationPage();
+      patientInformationPage.navigate();
 
-        var patientInformationPage = browser.page.patientInformationPage();
+      browser.pause(browser.globals.wait_milliseconds_shortest);
+      patientInformationPage.section.preferences.waitForElementVisible('@title', browser.globals.wait_milliseconds)
+        .assert.containsText('@title', 'Application Preferences');
+      patientInformationPage.section.personalInfo.assert.containsText('@title', 'Personal Information');
+      patientInformationPage.section.contacts.assert.containsText('@title', 'Contact Information');
+      patientInformationPage.section.changeHistory.assert.containsText('@title', 'Change History');
 
-        patientInformationPage.navigate();
-
-        browser.pause(browser.globals.wait_milliseconds_shortest);
-        patientInformationPage.section.preferences.waitForElementVisible('@title', browser.globals.wait_milliseconds)
-            .assert.containsText('@title', 'Application Preferences');
-        patientInformationPage.section.personalInfo.assert.containsText('@title', 'Personal Information');
-        patientInformationPage.section.contacts.assert.containsText('@title', 'Contact Information');
-        patientInformationPage.section.changeHistory.assert.containsText('@title', 'Change History');
-
-        browser.end();
+      browser.end();
     }
+  }
 };
