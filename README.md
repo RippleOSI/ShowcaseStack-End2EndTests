@@ -1,9 +1,15 @@
-# RippleOSI-End2EndTests
-repo for End to End tests for RippleOSI stack   
-(history: derived from PulseTile test work)
+# RippleOSI-ShowcaseStack-End2EndTests
+This repository contains the tools for e2e/Browser Automated testing of the Ripple Foundation’s Showcase Stack. This type of test gives possibility to check working of our application in browser. We can open pages and simulate users actions. This involves testing the three key components, namely; PulseTile, QEWD.js and EtherCIS from the user interface down. The test material contains automated test scripts that are set up as a job and trigger user like behaviour at the browser, which simulates user driven testing from frontend to backend. 
+
+For more information on end to end testing, please see: 
+https://www.softwaretestinghelp.com/what-is-end-to-end-testing/
+
+Fore more information about NightwatchJS technology, please see:
+http://nightwatchjs.org/
 
 # Instruction
-For Windows
+
+**For Windows:**
 * Install Chrome https://www.google.com/chrome/browser/desktop/index.html
 * Install JDK http://www.oracle.com/technetwork/java/javase/downloads/index.html, latest will do
 * Install node.js and npm https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm (checked for node version 0.10.22 and npm version 1.3.14)
@@ -25,7 +31,7 @@ For Windows
 * When the tests are finished, the report will be displayed in your browser
 * You can find screenshots of failed tests in reports\screenshots
 
-For macOS: 
+**For macOS:** 
 * Install Chrome https://www.google.com/chrome/browser/desktop/index.html
 * Install JDK http://www.oracle.com/technetwork/java/javase/downloads/index.html, latest will do
 * Install node.js and npm https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm (checked for node version 8.9.3 and npm version 5.6.0 )
@@ -56,6 +62,7 @@ Is a config file. See for full details http://nightwatchjs.org/gettingstarted/#s
 The important part besides paths to chrome driver and selenium server is the ability to set several environments.
 Environments contain information about your app url, selenium server url (which shouldn't be changed unless you are 
 going to use remote servers like selenium grid or cloud solutions), whether to do screenshots and where to put those, etc.
+
 Also the switch between versions of app (react/angular) is implemented with environments. There is a default env that
 is pointing to https://secureshowcase.ripple.foundation/ with no version switch and dev_react and dev_angular 
 each pointing to https://securedev.ripple.foundation/ with switching to corresponding version.
@@ -86,6 +93,11 @@ make sure to set
 * Note that script execution might take some time depending on server and data base response time
 
 # Jenkins
+Jenkins is the open-source automation server, which can be used for automated testing of software. Among others it can be used for browser automated testing.
+
+For more information about Jenkins please see:
+https://jenkins.io/
+
 * Go to http://138.68.171.243:8080
 * Log in with your account
 * In the center of the screen you see the table of the jobs. There are such jobs:
@@ -95,9 +107,9 @@ make sure to set
 * Each job pulls code from Github, runs Nightwath tests and sends reports. 
 * You can run the job by clicking on run button in the very right
 * Also jobs are run by cron timer:
-	* Showcase Nightwatch Tests is run Mon-Fri at 12 AM London time
-	* Dev React Nightwatch Tests is run on Thu at 12:30 AM London time
-	* Dev Angular Nightwatch Tests is run on Thu at 1 AM London time
+	* Showcase Nightwatch Tests is run Mon-Fri at 7.30 AM London time
+	* Dev React Nightwatch Tests is run Mon-Fri at 5.30 AM London time
+	* Dev Angular Nightwatch Tests is run Mon-Fri at 6.30 AM London time
 * After job is done, it will send out a email with test results.
 	* Test reort and build log are attached to the email
 	* Email is sent from gmail acc jenkins.ripple@gmail.com pass: ripple.foundation
