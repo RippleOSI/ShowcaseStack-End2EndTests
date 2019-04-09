@@ -49,10 +49,13 @@
       "globals" : {
         "settings" : {
           "version" : "showcase",
-          "loginInput": "Alen",
-          "passwordInput": "070790",
+          "userLogin": "Alen",
+          "userPassword": "070790",
+          "hasTermsAndConditions": false,
+          "userLoginInput": "input[name^='username']",
+          "userPasswordInput": "input[name^='password']",
           "loginButton": "button.auth0-lock-submit",
-          "testsNotChecked" : [],
+          "testsNotChecked" : ["topThreeThingsTest"],
           "menuItems" : ["@problems", "@contacts", "@medications", "@allergies", "@clinicalNotes", "@personalNotes", "@vaccinations"],
           "creationDenied" : [],
           "editingDenied" : [],
@@ -61,6 +64,15 @@
             "lastname" : "Mekka"
           },
           "patientSummaryMain" : "@patientSummary",
+          "patientBannerInfo": {
+            "name": "Ivor Cox",
+            "doctor": "Doctor: Goff Carolyn D.",
+            "address": "Address: Hamilton Practice, 5544 Ante Street, Hamilton, Lanarkshire, N06 5LP",
+            "birthday": "D.O.B. 06-Jun-1944",
+            "phone": "Phone: (011981) 32362",
+            "gender": "Gender: Male",
+            "number": "NHS No. 999 999 9000"
+          },
           "userProfile" : {
             "avatar" : true,
             "name" : "Alen Mekka",
@@ -82,10 +94,13 @@
         "version_switch_path": "/api/ui/angular",
         "settings" : {
           "version" : "dev_ang",
-          "loginInput": "Alen",
-          "passwordInput": "070790",
+          "userLogin": "Alen",
+          "userPassword": "070790",
+          "hasTermsAndConditions": false,
+          "userLoginInput": "input[name^='username']",
+          "userPasswordInput": "input[name^='password']",
           "loginButton": "button.auth0-lock-submit",
-          "testsNotChecked" : [],
+          "testsNotChecked" : ["topThreeThingsTest"],
           "menuItems" : ["@problems", "@contacts", "@medications", "@allergies", "@clinicalNotes", "@personalNotes", "@vaccinations"],
           "creationDenied" : [],
           "editingDenied" : [],
@@ -94,6 +109,15 @@
             "lastname" : "Mekka"
           },
           "patientSummaryMain" : "@patientSummary",
+          "patientBannerInfo": {
+            "name": "Ivor Cox",
+            "doctor": "Doctor: Goff Carolyn D.",
+            "address": "Address: Hamilton Practice, 5544 Ante Street, Hamilton, Lanarkshire, N06 5LP",
+            "birthday": "D.O.B. 06-Jun-1944",
+            "phone": "Phone: (011981) 32362",
+            "gender": "Gender: Male",
+            "number": "NHS No. 999 999 9000"
+          },
           "userProfile" : {
             "avatar" : true,
             "name" : "Alen Mekka",
@@ -115,32 +139,44 @@
         "version_switch_path": "/api/ui/react",
         "settings" : {
           "version" : "dev_react",
-          "loginInput": "Alen",
-          "passwordInput": "070790",
+          "userLogin": "Alen",
+          "userPassword": "070790",
+          "hasTermsAndConditions": false,
+          "userLoginInput": "input[name^='username']",
+          "userPasswordInput": "input[name^='password']",
           "loginButton": "button.auth0-lock-submit",
-          "testsNotChecked" : [],
+          "testsNotChecked" : ["topThreeThingsTest"],
           "menuItems" : ["@problems", "@contacts", "@medications", "@allergies", "@clinicalNotes", "@personalNotes", "@vaccinations"],
           "creationDenied" : [],
           "editingDenied" : [],
           "userInfo" : {
-            "firstname" : "Alen",
-            "lastname" : "Mekka"
+              "firstname" : "Alen",
+              "lastname" : "Mekka"
           },
           "patientSummaryMain" : "@patientSummary",
+          "patientBannerInfo": {
+              "name": "Ivor Cox",
+              "doctor": "Doctor: Goff Carolyn D.",
+              "address": "Address: Hamilton Practice, 5544 Ante Street, Hamilton, Lanarkshire, N06 5LP",
+              "birthday": "D.O.B. 06-Jun-1944",
+              "phone": "Phone: (011981) 32362",
+              "gender": "Gender: Male",
+              "number": "NHS No. 999 999 9000"
+          },
           "userProfile" : {
-            "avatar" : true,
-            "name" : "Alen Mekka",
-            "userType" : "PHR",
-            "email" : "aschenputtel123912@gmail.com",
-            "birthday" : "10/05/2099",
-            "info" : "About Showcase Stack; PulseTile version 1.0.0/QEWD_Ripple version 2.32.1"
+              "avatar" : true,
+              "name" : "Alen Mekka",
+              "userType" : "PHR",
+              "email" : "aschenputtel123912@gmail.com",
+              "birthday" : "10/05/2099",
+              "info" : "About Showcase Stack; PulseTile version 1.0.0/QEWD_Ripple version 2.32.1"
           }
         }
       }
     },
 
     "helm" : {
-      "launch_url" : "http://dev.ripple.foundation:8000",
+      "launch_url" : "https://apple-cake.ripple.foundation",
       "globals" : {
         "version_switch_host": "dev.ripple.foundation",
         "version_switch_port": "8000",
@@ -148,21 +184,34 @@
         "version_switch_path": "/api/ui/react",
         "settings" : {
           "version" : "helm",
-          "loginInput": "ivor.cox@ripple.foundation",
-          "passwordInput": "IvorCox1!",
-          "loginButton" : "input[name^='login']",
-          "testsNotChecked" : ["personalNotesTest", "contacts"],
+          "userLogin": "rob.tweed@gmail.com",
+          "userPassword": "password",
+          "hasTermsAndConditions": true,
+          "userLoginInput": "input[name^='email']",
+          "userPasswordInput": "input[name^='password']",
+          "loginButton": "button[class^='succes login']",
+          "agreeButton": "button[class^='agree succes']",
+          "testsNotChecked" : ["personalNotesTest", "contacts", "patientAccordionTest", "patientInformationTest"],
           "menuItems" : ["@medications", "@allergies", "@vaccinations", "@diagnosis", "@topThreeThings"],
           "creationDenied" : ["allergies", "diagnosis", "medications", "vaccinations"],
           "editingDenied" : ["allergies", "diagnosis", "medications", "vaccinations"],
           "userInfo" : {
-            "firstname" : "Ivor",
-            "lastname" : "Cox"
+            "firstname" : "Robert",
+            "lastname" : "Tweed"
+          },
+          "patientBannerInfo": {
+              "name": "SMITH, John (Mr)",
+              "doctor": "Doctor: BINNEY, david (Mr)",
+              "address": "Address: 6, Leeds, Leeds, Leeds, West Yorks, LS196BA",
+              "birthday": "D.O.B. 01-Jan-1970",
+              "phone": "Phone:",
+              "gender": "Gender: male",
+              "number": "NHS No. 999 999 9801"
           },
           "patientSummaryMain" : "@home",
           "userProfile" : {
             "avatar" : false,
-            "name" : "Ivor Cox",
+            "name" : "Robert Tweed",
             "userType" : "PHR",
             "email" : "",
             "birthday" : "",

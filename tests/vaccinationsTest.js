@@ -18,8 +18,8 @@ module.exports = {
         const newNameFirstPart = 'antigen';
         const nameFirstPart = 'hepatitis_a';
 
-        browser.globals.deleteTestItems(browser, tab, "vaccinationName", nameFirstPart);
-        browser.globals.deleteTestItems(browser, tab, "vaccinationName", newNameFirstPart);
+        // browser.globals.deleteTestItems(browser, tab, "vaccinationName", nameFirstPart);
+        // browser.globals.deleteTestItems(browser, tab, "vaccinationName", newNameFirstPart);
 
         browser.pause(browser.globals.wait_milliseconds_shortest);
         leftBarMenu = patientSummaryPage.section.leftBarMenu;

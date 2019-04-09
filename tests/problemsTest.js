@@ -17,7 +17,7 @@ module.exports = {
         const tab = "problems";
         const nameFirstPart = 'bronchitis';
 
-        browser.globals.deleteTestItems(browser, tab, "problem", nameFirstPart);
+        // browser.globals.deleteTestItems(browser, tab, "problem", nameFirstPart);
 
         browser.pause(browser.globals.wait_milliseconds_shortest);
         leftBarMenu = patientSummaryPage.section.leftBarMenu;
