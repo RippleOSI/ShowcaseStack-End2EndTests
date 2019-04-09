@@ -82,7 +82,7 @@ module.exports = {
                     selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Problems')]",
                     locateStrategy: 'xpath',
                     elements: {
-                        header: "h3",
+                        header: ".board-title",
                         redirectButton: ".btn-board-more"
                     }
                 },
@@ -90,7 +90,7 @@ module.exports = {
                     selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Problems / Issues')]",
                     locateStrategy: 'xpath',
                     elements: {
-                        header: "h3",
+                        header: ".board-title",
                         redirectButton: ".btn-board-more"
                     }
                 },
@@ -98,7 +98,7 @@ module.exports = {
                     selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Contacts')]",
                     locateStrategy: 'xpath',
                     elements: {
-                        header: "h3",
+                        header: ".board-title",
                         redirectButton: ".btn-board-more"
                     }
                 },
@@ -106,7 +106,7 @@ module.exports = {
                     selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Allergies')]",
                     locateStrategy: 'xpath',
                     elements: {
-                        header: "h3",
+                        header: ".board-title",
                         redirectButton: ".btn-board-more"
                     }
                 },
@@ -114,7 +114,7 @@ module.exports = {
                     selector: "div//div[contains(@class,'dashboard-item')][contains(., 'Medications')]",
                     locateStrategy: 'xpath',
                     elements: {
-                        header: "h3",
+                        header: ".board-title",
                         redirectButton: ".btn-board-more"
                     }
                 }
