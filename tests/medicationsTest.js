@@ -15,7 +15,8 @@ module.exports = {
 
         const tab = "medications";
         const nameFirstPart = 'ventolin';
-        browser.globals.deleteTestItems(browser, tab, "name", nameFirstPart);
+
+        // browser.globals.deleteTestItems(browser, tab, "name", nameFirstPart);
 
         browser.pause(browser.globals.wait_milliseconds_shortest);
         leftBarMenu = patientSummaryPage.section.leftBarMenu;

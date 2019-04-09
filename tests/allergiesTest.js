@@ -20,8 +20,8 @@ module.exports = {
         const newCauseFirstPart = 'antibiotics';
         const causeFirstPart = 'hepatitis';
 
-        browser.globals.deleteTestItems(browser, tab, "cause", causeFirstPart);
-        browser.globals.deleteTestItems(browser, tab, "cause", newCauseFirstPart);
+        // browser.globals.deleteTestItems(browser, tab, "cause", causeFirstPart);
+        // browser.globals.deleteTestItems(browser, tab, "cause", newCauseFirstPart);
 
         leftBarMenu.waitForElementVisible('@allergies', browser.globals.wait_milliseconds_short)
             .click('@allergies');

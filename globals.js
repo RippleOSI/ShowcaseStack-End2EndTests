@@ -182,6 +182,9 @@ module.exports = {
 
             response.on("data", function (chunk) {
                 var text = "" + chunk;
+
+                console.log('TEXT: ', text);
+
                 var token = text.split(",")[0].split(":")[1].replace(/[{"]/g, "");
                 console.log("Auth token: " + token);
                 var options = {

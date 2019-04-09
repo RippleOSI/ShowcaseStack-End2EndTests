@@ -347,6 +347,37 @@ module.exports = {
                 }
             }
         },
+        topThreeThings: {
+            selector: ".panel-primary",
+            elements: {
+                title: ".panel-heading .panel-title",
+                table: "table.table-striped",
+                tableRow: "table tbody tr",
+                createButton: ".btn-create",
+                filterButton: ".btn-filter",
+                filterInput: ".panel-filter .form-control"
+            }
+        },
+        topThreeThingsDetails: {
+            selector: ".panel-secondary",
+            elements: {
+                title: ".panel-title",
+                editButton: ".btn-edit",
+            }
+        },
+        topThreeThingsEdit: {
+            selector: ".panel-secondary",
+            elements: {
+                title: ".panel-title",
+                name1: "#name1",
+                name2: "#name2",
+                name3: "#name3",
+                description1: "#description1",
+                description2: "#description2",
+                description3: "#description3",
+                completeButton: ".btn-success .fa-check"
+            }
+        },
         vaccinations: {
             selector: ".panel-primary",
             elements: {
