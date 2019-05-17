@@ -11,7 +11,7 @@
     "log_path" : "",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.chrome.driver" : "/usr/local/bin/chromedriver",
+      "webdriver.chrome.driver" : "/usr/local/bin/chromedriver1",
       "webdriver.gecko.driver" : "",
       "webdriver.edge.driver" : ""
     }
@@ -27,7 +27,7 @@
         "enabled" : true,
         "on_failure" : true,
         "on_error" : true,
-        "path" : "reports\\screenshots"
+        "path" : "reports/screenshots"
       },
       "desiredCapabilities": {
         "browserName": "chrome",
@@ -296,7 +296,8 @@
           "loginButton": "button[class^='succes login']",
           "agreeButton": "button[class^='agree succes']",
           "testsToCheck" : [
-            "helmReactAdminSummaryTest"
+            "helmReactAdminSummaryTest",
+            "helmReactAdminTopThreeThingsTest"
           ],
           "menuItems" : ["@medications", "@allergies", "@vaccinations", "@diagnosis", "@topThreeThings"],
           "userInfo" : {

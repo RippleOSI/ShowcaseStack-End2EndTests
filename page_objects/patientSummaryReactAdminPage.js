@@ -11,6 +11,20 @@ module.exports = {
                 },
             }
         },
+        sidebarMenu: {
+            selector: "#sidebarMenu",
+            locateStrategy: 'css selector',
+            elements: {
+                summaryItem: {
+                    selector: "#menu-summary",
+                    locateStrategy: 'css selector'
+                },
+                topThreeThingsItem: {
+                    selector: "#menu-top3Things",
+                    locateStrategy: 'css selector'
+                },
+            }
+        },
         userPanel: {
             selector: "#userPanel",
             locateStrategy: 'css selector',
