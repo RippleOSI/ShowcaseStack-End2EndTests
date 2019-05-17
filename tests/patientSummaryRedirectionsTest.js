@@ -1,73 +1,74 @@
 const isTestChecked = require('../utils/isTestChecked.js');
+const isTestForCurrentBase = require('../utils/isTestForCurrentBase');
 
 module.exports = {
     'Patient Summary Redirections': function (browser) {
-        browser.page.loginPage()
-            .login();
 
-        browser.resizeWindow(1920, 1080);
+        if (isTestChecked(browser, "patientSummaryRedirectionsTest") && isTestForCurrentBase(browser, "ReactJS")) {
 
-        var patientSummaryPage = browser.page.patientSummaryPage();
+            browser.page.loginPage().login();
 
-        var problemsTitle = (browser.globals.settings.version === 'helm') ? 'Problems / Issues' : 'Problems / Diagnoses';
-        var medicationsTitle = (browser.globals.settings.version === 'helm') ? 'Medications' : 'All Medications';
+            var patientSummaryPage = browser.page.patientSummaryPage();
 
-        patientSummaryPage.handlePopUp();
-        browser.pause(browser.globals.wait_milliseconds_shortest);
+            var problemsTitle = (browser.globals.settings.version === 'helm') ? 'Problems / Issues' : 'Problems / Diagnoses';
+            var medicationsTitle = (browser.globals.settings.version === 'helm') ? 'Medications' : 'All Medications';
 
-        leftBarMenu = patientSummaryPage.section.leftBarMenu;
+            patientSummaryPage.handlePopUp();
+            browser.pause(browser.globals.wait_milliseconds_shortest);
 
-        patientSummarySection = patientSummaryPage.section.patientSummary;
+            leftBarMenu = patientSummaryPage.section.leftBarMenu;
 
-        patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
+            patientSummarySection = patientSummaryPage.section.patientSummary;
 
-        contactsBoardSection = patientSummarySection.section.contactsBoard;
-        allergiesBoardSection = patientSummarySection.section.allergiesBoard;
-        medicationsBoardSection = patientSummarySection.section.medicationsBoard;
+            patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
 
-        allergiesSection = patientSummaryPage.section.allergies;
-        contactsSection = patientSummaryPage.section.contacts;
-        medicationsSection = patientSummaryPage.section.medications;
+            contactsBoardSection = patientSummarySection.section.contactsBoard;
+            allergiesBoardSection = patientSummarySection.section.allergiesBoard;
+            medicationsBoardSection = patientSummarySection.section.medicationsBoard;
 
-        problemsBoardSection = patientSummarySection.section.problemsBoard;
-        problemsSection = patientSummaryPage.section.problems;
-        if (browser.globals.settings.version === 'helm') {
-            problemsBoardSection = patientSummarySection.section.diagnosisBoard;
-            problemsSection = patientSummaryPage.section.diagnosis;
-        }
+            allergiesSection = patientSummaryPage.section.allergies;
+            contactsSection = patientSummaryPage.section.contacts;
+            medicationsSection = patientSummaryPage.section.medications;
 
-        var patientSummaryMain = browser.globals.settings.patientSummaryMain;
+            problemsBoardSection = patientSummarySection.section.problemsBoard;
+            problemsSection = patientSummaryPage.section.problems;
+            if (browser.globals.settings.version === 'helm') {
+                problemsBoardSection = patientSummarySection.section.diagnosisBoard;
+                problemsSection = patientSummaryPage.section.diagnosis;
+            }
 
-        if (false === isTestChecked(browser, "contacts")) {
-            contactsBoardSection.click('@redirectButton');
-            contactsSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
-                .assert.containsText('@title', 'Contacts');
-        }
+            var patientSummaryMain = browser.globals.settings.patientSummaryMain;
 
-        leftBarMenu.click(patientSummaryMain);
-        patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
+            if (isTestChecked(browser, "contactsTest")) {
+                contactsBoardSection.click('@redirectButton');
+                contactsSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
+                    .assert.containsText('@title', 'Contacts');
+            }
 
-        allergiesBoardSection.click('@redirectButton');
-        allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
+            leftBarMenu.click(patientSummaryMain);
+            patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
+
+            allergiesBoardSection.click('@redirectButton');
+            allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
                 .assert.containsText('@title', 'Allergies');
 
-        leftBarMenu.click(patientSummaryMain);
-        patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
-        problemsBoardSection.click('@redirectButton');
+            leftBarMenu.click(patientSummaryMain);
+            patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
+            problemsBoardSection.click('@redirectButton');
 
-        allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
-            .assert.containsText('@title', problemsTitle);
+            allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
+                .assert.containsText('@title', problemsTitle);
 
-        leftBarMenu.click(patientSummaryMain);
-        patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
-        medicationsBoardSection.click('@redirectButton');
+            leftBarMenu.click(patientSummaryMain);
+            patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
+            medicationsBoardSection.click('@redirectButton');
 
-        allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
-            .assert.containsText('@title', medicationsTitle);
+            allergiesSection.waitForElementVisible('@title', browser.globals.wait_milliseconds)
+                .assert.containsText('@title', medicationsTitle);
 
-        leftBarMenu.click(patientSummaryMain);
-        patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
-
+            leftBarMenu.click(patientSummaryMain);
+            patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
+        }
         browser.end();
     }
 };

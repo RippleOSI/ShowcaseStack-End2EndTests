@@ -1,23 +1,18 @@
 const scrollPage = require('../utils/scrollPage.js');
 const isTestChecked = require('../utils/isTestChecked.js');
+const isTestForCurrentBase = require('../utils/isTestForCurrentBase');
 
 module.exports = {
     'Patient Headings Personal Notes': function (browser) {
-        var dateFormat = require('dateformat');
-        if (isTestChecked(browser, "personalNotesTest")) {
-            browser.end();
-        } else {
-            browser.page.loginPage()
-                .login();
+        if (isTestChecked(browser, "personalNotesTest") && isTestForCurrentBase(browser, "ReactJS")) {
 
-            browser.resizeWindow(1920, 1080);
+            var dateFormat = require('dateformat');
+            browser.page.loginPage().login();
 
             var patientSummaryPage = browser.page.patientSummaryPage();
-
             patientSummaryPage.handlePopUp();
 
             const tab = "personalnotes";
-
             const patientEnquiry = 'patient_enquiry';
             const patientNote = 'patient_note';
 
@@ -89,8 +84,7 @@ module.exports = {
                 .assert.containsText('@noteLabel', newNote);
 
             browser.globals.deleteCurrentItem(browser, tab);
-
-            browser.end();
         }
+        browser.end();
     }
 };

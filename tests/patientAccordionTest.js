@@ -1,42 +1,42 @@
 const isTestChecked = require('../utils/isTestChecked.js');
+const isTestForCurrentBase = require('../utils/isTestForCurrentBase');
 
 module.exports = {
   'Patient Information (part of Accordion)': function (browser) {
-    var dateFormat = require('dateformat');
-    if (isTestChecked(browser, "patientAccordionTest")) {
-      browser.end();
-    } else {
-      browser.page.loginPage().login();
-      browser.resizeWindow(1920, 1080);
 
-      var patientInformationPage = browser.page.patientInformationPage();
+     if (isTestChecked(browser, "patientAccordionTest") && isTestForCurrentBase(browser, "ReactJS")) {
 
-      patientInformationPage.navigate();
+          var dateFormat = require('dateformat');
 
-      browser.pause(browser.globals.wait_milliseconds_shortest);
-      var content = patientInformationPage.section.personalInfo
-        .waitForElementVisible('@expandButton', browser.globals.wait_milliseconds)
-        .click('@expandButton')
-        .section.content;
-      browser.pause(browser.globals.wait_milliseconds);
+          browser.page.loginPage().login();
 
-      var userInfo = browser.globals.settings.userInfo;
+          var patientInformationPage = browser.page.patientInformationPage();
+              patientInformationPage.navigate();
 
-      content.waitForElementVisible('@firstNameValue', browser.globals.wait_milliseconds)
-        .assert.containsText('@firstNameLabel', 'First Name')
-        .assert.containsText('@firstNameValue', userInfo.firstname)
-        .assert.containsText('@lastNameLabel', 'Last Name')
-        .assert.containsText('@lastNameValue', userInfo.lastname)
-        .assert.containsText('@nhsNoLabel', 'NHS No')
-        .assert.containsText('@nhsNoValue', '9999999000')
-        .assert.containsText('@birthdayLabel', 'Date of Birth')
-        .assert.containsText('@birthdayValue', dateFormat(new Date(), "dd-mmm-yyyy"))
-        .assert.containsText('@genderLabel', 'Gender')
-        .assert.containsText('@genderValue', 'Female')
-        .assert.containsText('@doctorLabel', 'Doctor')
-        .assert.containsText('@doctorValue', 'Dr Emma Huston');
+          browser.pause(browser.globals.wait_milliseconds_shortest);
+          var content = patientInformationPage.section.personalInfo
+              .waitForElementVisible('@expandButton', browser.globals.wait_milliseconds)
+              .click('@expandButton')
+              .section.content;
+          browser.pause(browser.globals.wait_milliseconds);
 
-      browser.end();
-    }
+          var userInfo = browser.globals.settings.userInfo;
+
+          content.waitForElementVisible('@firstNameValue', browser.globals.wait_milliseconds)
+            .assert.containsText('@firstNameLabel', 'First Name')
+            .assert.containsText('@firstNameValue', userInfo.firstname)
+            .assert.containsText('@lastNameLabel', 'Last Name')
+            .assert.containsText('@lastNameValue', userInfo.lastname)
+            .assert.containsText('@nhsNoLabel', 'NHS No')
+            .assert.containsText('@nhsNoValue', '9999999000')
+            .assert.containsText('@birthdayLabel', 'Date of Birth')
+            .assert.containsText('@birthdayValue', dateFormat(new Date(), "dd-mmm-yyyy"))
+            .assert.containsText('@genderLabel', 'Gender')
+            .assert.containsText('@genderValue', 'Female')
+            .assert.containsText('@doctorLabel', 'Doctor')
+            .assert.containsText('@doctorValue', 'Dr Emma Huston');
+
+     }
+     browser.end();
   }
 };

@@ -1,26 +1,27 @@
+const isTestChecked = require('../utils/isTestChecked.js');
+const isTestForCurrentBase = require('../utils/isTestForCurrentBase');
+
 module.exports = {
     'Breadcrumbs': function (browser) {
-        browser.page.loginPage()
-            .login();
 
-        browser.resizeWindow(1920, 1080);
+        if (isTestChecked(browser, "breadcrumbsTest") && isTestForCurrentBase(browser, "ReactJS")) {
 
-        var patientSummaryPage = browser.page.patientSummaryPage();
+            browser.page.loginPage().login();
 
-        patientSummaryPage.handlePopUp();
+            var patientSummaryPage = browser.page.patientSummaryPage();
 
-        leftBarMenu = patientSummaryPage.section.leftBarMenu;
+            patientSummaryPage.handlePopUp();
 
-        patientSummarySection = patientSummaryPage.section.patientSummary;
+            leftBarMenu = patientSummaryPage.section.leftBarMenu;
+            patientSummarySection = patientSummaryPage.section.patientSummary;
 
-        var menuItems = browser.globals.settings.menuItems;
-        var arrayLength = menuItems.length;
-        for (var index = 0; index < arrayLength; index++) {
-            var menuItem = menuItems[index];
-            leftBarMenu.waitForElementVisible(menuItem, browser.globals.wait_milliseconds)
-                .click(menuItem);
-
-            patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
+            var menuItems = browser.globals.settings.menuItems;
+            var arrayLength = menuItems.length;
+            for (var index = 0; index < arrayLength; index++) {
+                var menuItem = menuItems[index];
+                leftBarMenu.waitForElementVisible(menuItem, browser.globals.wait_milliseconds).click(menuItem);
+                patientSummarySection.waitForElementVisible('@title', browser.globals.wait_milliseconds);
+            }
         }
 
         browser.end();

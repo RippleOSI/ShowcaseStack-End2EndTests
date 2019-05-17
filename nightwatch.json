@@ -5,14 +5,13 @@
   "custom_assertions_path" : "",
   "page_objects_path" : "page_objects",
   "globals_path" : "globals",
-
   "selenium" : {
     "start_process" : true,
     "server_path" : "/usr/local/bin/selenium-server-standalone.jar",
     "log_path" : "",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.chrome.driver" : "/usr/local/bin/chromedriver1",
+      "webdriver.chrome.driver" : "/usr/local/bin/chromedriver",
       "webdriver.gecko.driver" : "",
       "webdriver.edge.driver" : ""
     }
@@ -28,7 +27,7 @@
         "enabled" : true,
         "on_failure" : true,
         "on_error" : true,
-        "path" : "reports/screenshots"
+        "path" : "reports\\screenshots"
       },
       "desiredCapabilities": {
         "browserName": "chrome",
@@ -48,6 +47,7 @@
       "launch_url" : "https://secureshowcase.ripple.foundation/",
       "globals" : {
         "settings" : {
+          "base" : "ReactJS",
           "version" : "showcase",
           "userLogin": "Alen",
           "userPassword": "070790",
@@ -55,7 +55,21 @@
           "userLoginInput": "input[name^='username']",
           "userPasswordInput": "input[name^='password']",
           "loginButton": "button.auth0-lock-submit",
-          "testsNotChecked" : ["topThreeThingsTest"],
+          "testsToCheck" : [
+            "allergiesTest",
+            "breadcrumbsTest",
+            "contactsTest",
+            "loginTest",
+            "medicationsTest",
+            "patientAccordionTest",
+            "patientInformationTest",
+            "patientSummaryRedirectionsTest",
+            "patientSummaryTest",
+            "problemsTest",
+            "profileTest",
+            "sideBarMenuTest",
+            "vaccinationsTest"
+          ],
           "menuItems" : ["@problems", "@contacts", "@medications", "@allergies", "@clinicalNotes", "@personalNotes", "@vaccinations"],
           "creationDenied" : [],
           "editingDenied" : [],
@@ -93,6 +107,7 @@
         "version_switch_init_path": "/api/initialise",
         "version_switch_path": "/api/ui/angular",
         "settings" : {
+          "base" : "ReactJS",
           "version" : "dev_ang",
           "userLogin": "Alen",
           "userPassword": "070790",
@@ -100,7 +115,21 @@
           "userLoginInput": "input[name^='username']",
           "userPasswordInput": "input[name^='password']",
           "loginButton": "button.auth0-lock-submit",
-          "testsNotChecked" : ["topThreeThingsTest"],
+          "testsToCheck" : [
+            "allergiesTest",
+            "breadcrumbsTest",
+            "contactsTest",
+            "loginTest",
+            "medicationsTest",
+            "patientAccordionTest",
+            "patientInformationTest",
+            "patientSummaryRedirectionsTest",
+            "patientSummaryTest",
+            "problemsTest",
+            "profileTest",
+            "sideBarMenuTest",
+            "vaccinationsTest"
+          ],
           "menuItems" : ["@problems", "@contacts", "@medications", "@allergies", "@clinicalNotes", "@personalNotes", "@vaccinations"],
           "creationDenied" : [],
           "editingDenied" : [],
@@ -138,6 +167,7 @@
         "version_switch_init_path": "/api/initialise",
         "version_switch_path": "/api/ui/react",
         "settings" : {
+          "base" : "ReactJS",
           "version" : "dev_react",
           "userLogin": "Alen",
           "userPassword": "070790",
@@ -145,7 +175,21 @@
           "userLoginInput": "input[name^='username']",
           "userPasswordInput": "input[name^='password']",
           "loginButton": "button.auth0-lock-submit",
-          "testsNotChecked" : ["topThreeThingsTest"],
+          "testsToCheck" : [
+            "allergiesTest",
+            "breadcrumbsTest",
+            "contactsTest",
+            "loginTest",
+            "medicationsTest",
+            "patientAccordionTest",
+            "patientInformationTest",
+            "patientSummaryRedirectionsTest",
+            "patientSummaryTest",
+            "problemsTest",
+            "profileTest",
+            "sideBarMenuTest",
+            "vaccinationsTest"
+          ],
           "menuItems" : ["@problems", "@contacts", "@medications", "@allergies", "@clinicalNotes", "@personalNotes", "@vaccinations"],
           "creationDenied" : [],
           "editingDenied" : [],
@@ -183,6 +227,7 @@
         "version_switch_init_path": "/api/initialise",
         "version_switch_path": "/api/ui/react",
         "settings" : {
+          "base" : "ReactJS",
           "version" : "helm",
           "userLogin": "rob.tweed@gmail.com",
           "userPassword": "password",
@@ -191,7 +236,19 @@
           "userPasswordInput": "input[name^='password']",
           "loginButton": "button[class^='succes login']",
           "agreeButton": "button[class^='agree succes']",
-          "testsNotChecked" : ["personalNotesTest", "contacts", "patientAccordionTest", "patientInformationTest"],
+          "testsToCheck" : [
+            "allergiesTest",
+            "breadcrumbsTest",
+            "loginTest",
+            "medicationsTest",
+            "patientSummaryRedirectionsTest",
+            "patientSummaryTest",
+            "problemsTest",
+            "profileTest",
+            "sideBarMenuTest",
+            "topThreeThingsTest",
+            "vaccinationsTest"
+          ],
           "menuItems" : ["@medications", "@allergies", "@vaccinations", "@diagnosis", "@topThreeThings"],
           "creationDenied" : ["allergies", "diagnosis", "medications", "vaccinations"],
           "editingDenied" : ["allergies", "diagnosis", "medications", "vaccinations"],
@@ -207,6 +264,52 @@
               "phone": "Phone:",
               "gender": "Gender: male",
               "number": "NHS No. 999 999 9801"
+          },
+          "patientSummaryMain" : "@home",
+          "userProfile" : {
+            "avatar" : false,
+            "name" : "Robert Tweed",
+            "userType" : "PHR",
+            "email" : "",
+            "birthday" : "",
+            "info" : "About Showcase Stack; PulseTile version 1.0.0/QEWD_Ripple version 15.6.2"
+          }
+        }
+      }
+    },
+
+    "helm_ra" : {
+      "launch_url" : "https://helm-dev.ripple.foundation",
+      "globals" : {
+        "version_switch_host": "dev.ripple.foundation",
+        "version_switch_port": "8000",
+        "version_switch_init_path": "/api/initialise",
+        "version_switch_path": "/api/ui/react",
+        "settings" : {
+          "base" : "React-Admin",
+          "version" : "helm_ra",
+          "userLogin": "rob.tweed@gmail.com",
+          "userPassword": "password",
+          "hasTermsAndConditions": true,
+          "userLoginInput": "input[name^='email']",
+          "userPasswordInput": "input[name^='password']",
+          "loginButton": "button[class^='succes login']",
+          "agreeButton": "button[class^='agree succes']",
+          "testsToCheck" : [
+            "helmReactAdminSummaryTest"
+          ],
+          "menuItems" : ["@medications", "@allergies", "@vaccinations", "@diagnosis", "@topThreeThings"],
+          "userInfo" : {
+            "firstname" : "Robert",
+            "lastname" : "Tweed"
+          },
+          "patientBannerInfo": {
+            "name": "Mr John Smith",
+            "doctor": "Doctor: Dr Alistair Walling",
+            "address": "Address: Not known",
+            "phone": "Phone: +44 7777777777",
+            "gender": "Gender: male",
+            "number": "NHS No.: 9999999801"
           },
           "patientSummaryMain" : "@home",
           "userProfile" : {

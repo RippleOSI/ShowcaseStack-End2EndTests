@@ -1,22 +1,15 @@
 const isTestChecked = require('../utils/isTestChecked.js');
+const isTestForCurrentBase = require('../utils/isTestForCurrentBase');
 
 module.exports = {
     'Patient Headings Top Three Things': function (browser) {
 
-        browser.page.loginPage()
-            .login();
+        if (isTestChecked(browser, "topThreeThingsTest") || isTestForCurrentBase(browser, "ReactJS")) {
 
-        browser.resizeWindow(1920, 1080);
+            browser.page.loginPage().login();
 
-        var patientSummaryPage = browser.page.patientSummaryPage();
-
-        patientSummaryPage.handlePopUp();
-
-        if (isTestChecked(browser, "topThreeThingsTest")) {
-
-            browser.end();
-
-        } else {
+            var patientSummaryPage = browser.page.patientSummaryPage();
+            patientSummaryPage.handlePopUp();
 
             const tab = "topThreeThings";
 
@@ -52,8 +45,7 @@ module.exports = {
                 .click('@completeButton');
 
             browser.pause(browser.globals.wait_milliseconds_short);
-
-            browser.end();
         }
+        browser.end();
     }
 };

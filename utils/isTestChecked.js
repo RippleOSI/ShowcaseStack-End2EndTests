@@ -1,5 +1,5 @@
 function isTestChecked(browser, testName) {
-    var testsNotCheckedArray = browser.globals.settings.testsNotChecked;
+    var testsNotCheckedArray = browser.globals.settings.testsToCheck;
     return testsNotCheckedArray.indexOf(testName) !== -1;
 }
 

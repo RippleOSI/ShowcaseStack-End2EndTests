@@ -1,16 +1,15 @@
 const scrollPage = require('../utils/scrollPage.js');
 const isTestChecked = require('../utils/isTestChecked.js');
+const isTestForCurrentBase = require('../utils/isTestForCurrentBase');
 
 module.exports = {
     'Patient Headings Contacts': function (browser) {
-        var dateFormat = require('dateformat');
-        if (isTestChecked(browser, "contacts")) {
-            browser.end();
-        } else {
-            browser.page.loginPage()
-                .login();
 
-            browser.resizeWindow(1920, 1080);
+        if (isTestChecked(browser, "contactsTest") && isTestForCurrentBase(browser, "ReactJS")) {
+
+            var dateFormat = require('dateformat');
+
+            browser.page.loginPage().login();
 
             var patientSummaryPage = browser.page.patientSummaryPage();
 
@@ -82,7 +81,6 @@ module.exports = {
                 .assert.containsText('@nextOfKinLabel', "Yes")
                 .assert.containsText('@noteLabel', "works_abroad")
                 .assert.containsText('@authorLabel', "@")
-            // .assert.containsText('@authorLabel', "bob.smith@gmail.com")
                 .assert.containsText('@dateLabel', dateFormat(new Date(), "dd-mmm-yyyy"))
                 .assert.containsText('@sourceLabel', "ethercis")
                 .getLocationInView('@editButton', scrollPage(browser))
@@ -115,8 +113,8 @@ module.exports = {
                 .assert.containsText('@noteLabel', newNote);
 
             browser.globals.deleteCurrentItem(browser, tab);
-
-            browser.end();
         }
+
+        browser.end();
     }
 };

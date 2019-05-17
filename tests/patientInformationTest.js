@@ -1,12 +1,10 @@
 const isTestChecked = require('../utils/isTestChecked.js');
+const isTestForCurrentBase = require('../utils/isTestForCurrentBase');
 
 module.exports = {
   'Patient Information page': function (browser) {
-    if (isTestChecked(browser, "patientInformationTest")) {
-      browser.end();
-    } else {
+    if (isTestChecked(browser, "patientInformationTest") && isTestForCurrentBase(browser, "ReactJS")) {
       browser.page.loginPage().login();
-      browser.resizeWindow(1920, 1080);
 
       var patientInformationPage = browser.page.patientInformationPage();
       patientInformationPage.navigate();
